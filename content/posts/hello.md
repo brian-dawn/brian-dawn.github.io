@@ -1,7 +1,7 @@
 +++
 template = "page.html"
 date = 2018-12-01
-title = "hi"
+title = "A Blog Post"
 
 # Apply the given template to ALL pages below the section, recursively.
 # If you have several nested sections each with a page_template set, the page
@@ -24,3 +24,9 @@ inc = (+1)
 main = print $ map inc [1,2,3]
 
 ```
+
+# Some header info
+wooo
+
+
+## Some more header info
