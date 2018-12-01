@@ -11,7 +11,9 @@ highlight_code = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+default_language = "en"
 theme = "after-dark"
+highlight_theme = "base16-ocean-dark"
 
 taxonomies = [
     # You can enable/disable RSS
@@ -19,7 +21,11 @@ taxonomies = [
     {name = "tags", rss = true},
 ]
 
-paginate_by = 5
 [extra]
 
+after_dark_menu = [
+    {url = "$BASE_URL", name = "Home"},
+    {url = "$BASE_URL/posts", name = "Categories"},
+    {url = "$BASE_URL/tags", name = "Tags"},
+]
 # Put all your custom variables here
