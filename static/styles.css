@@ -127,20 +127,10 @@ samp {
   font-size: 0.95em;
 }
 
-div.sourceCode {
+pre,
+code {
   padding: 1em;
-  border-radius: 0.1em;
   line-height: 1.2em;
-}
-
-pre:not(.sourceCode) {
-  padding: 1em;
-  border-radius: 0.1em;
-  line-height: 1.2em;
-}
-
-pre:not(.sourceCode),
-code:not(.sourceCode) {
   border-radius: 0.1em;
 }
 
@@ -374,10 +364,12 @@ table td {
   h6 {
     color: #eee;
   }
-  pre:not(.sourceCode),
   body {
     color: #ccc;
     background: #010101;
+  }
+  code {
+    color: #444;
   }
 
   a {
