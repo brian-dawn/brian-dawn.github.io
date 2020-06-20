@@ -127,8 +127,7 @@ samp {
   font-size: 0.95em;
 }
 
-pre,
-code {
+pre {
   padding: 1em;
   line-height: 1.2em;
   border-radius: 0.1em;
