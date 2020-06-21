@@ -1,9 +1,12 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h1 class="title">
   {{ page.title }}
 </h1>
 <p class="subtitle"><strong>{{ page.date }}</strong></p>
-<p>{{ page.content | safe }}</p>
+{{ page.content | safe }}
+
+<footer>
+  This page is
+  <a href="http://jeffhuang.com/designed_to_last/">designed to last</a>.
+</footer>
 {% endblock content %}
