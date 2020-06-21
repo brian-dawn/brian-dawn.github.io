@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://brian.dawn.lol/sitemap.xml
