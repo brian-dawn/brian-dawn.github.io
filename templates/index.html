@@ -2,4 +2,25 @@
 <p>
   Hi I'm Brian. I probably won't write much.
 </p>
+
+<h2>Lists</h2>
+<ul>
+  {% set posts = get_section(path="lists/_index.md") %} {% for page in
+  posts.pages %}
+  <li>
+    <a href="{{ page.permalink }}">{{ page.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+<h2>Posts</h2>
+<ul>
+  {% set posts = get_section(path="posts/_index.md") %} {% for page in
+  posts.pages %}
+  <li>
+    <a href="{{ page.permalink }}">{{ page.title }}</a>
+    {{ page.date | date(format="%Y-%m-%d") }}
+  </li>
+  {% endfor %}
+</ul>
+
 {% endblock content %}
