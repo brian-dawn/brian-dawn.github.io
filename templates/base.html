@@ -3,21 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <title>brian.dawn.lol</title>
-    <link rel="stylesheet" href="/styles.css" />
+    {% set css = load_data(path="static/styles.css") %}
+    <style>
+      {{css}}
+    </style>
   </head>
 
-  <div>
-    <a href="/">Home</a>
-    •
-    <a href="/posts">Posts</a>
-    •
-    <a href="/docs">Docs</a>
-    •
-    <a href="/resume.html">Resume</a>
-    •
-    <a href="/atom.xml">Feed</a>
-  </div>
   <body>
+    <div>
+      <a href="/">Home</a>
+      •
+      <a href="/posts">Posts</a>
+      •
+      <a href="/docs">Docs</a>
+      •
+      <a href="/resume.html">Resume</a>
+      •
+      <a href="/atom.xml">Feed</a>
+    </div>
     <section class="section">
       <div class="container">
         {% block content %} {% endblock %}
