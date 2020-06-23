@@ -358,7 +358,7 @@ table td {
     color: #eee;
   }
   body {
-    color: #ddd;
+    color: #eee;
     background: #333;
   }
   pre {
@@ -366,14 +366,14 @@ table td {
   }
 
   a {
-    color: #61afef;
+    color: #7ac3ff;
   }
 
   a:visited {
-    color: #61afef;
+    color: #7ac3ff;
   }
 
   a:active {
-    color: #61afef;
+    color: #7ac3ff;
   }
 }
