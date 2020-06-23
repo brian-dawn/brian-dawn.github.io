@@ -356,10 +356,10 @@ table td {
     color: #eee;
   }
   body {
-    color: #ccc;
-    background: #010101;
+    color: #ddd;
+    background: #333;
   }
-  code {
+  pre {
     color: #444;
   }
 
