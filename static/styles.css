@@ -1,7 +1,3 @@
-/*
- * Most of this CSS was taken from: https://gist.github.com/killercup/5917178
- */
-
 html {
   font-size: 100%;
   overflow-y: scroll;
@@ -347,16 +343,6 @@ table td {
   h2,
   h3 {
     page-break-after: avoid;
-  }
-}
-
-.orange {
-  background: #e5c07b;
-}
-
-@media (prefers-color-scheme: dark) {
-  .orange {
-    background: #c18401;
   }
 }
 
