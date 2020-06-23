@@ -40,6 +40,7 @@ a:hover {
 
 a:active {
   color: #2562d4;
+  text-decoration: none;
 }
 
 a:focus {
@@ -372,11 +373,7 @@ table td {
     color: #61afef;
   }
 
-  a:hover {
-    text-decoration: underline;
-  }
-
   a:active {
-    color: #56b6c2;
+    color: #61afef;
   }
 }
