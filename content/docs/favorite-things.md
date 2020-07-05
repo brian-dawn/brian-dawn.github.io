@@ -75,18 +75,6 @@ docker run -d --restart always \
     r.j3ss.co/sshb0t --user [YOUR GITHUB USERNAME HERE] --keyfile /root/.ssh/authorized_keys
 ```
 
-# bottom
-
-[github](https://github.com/ClementTsang/bottom)
-
-A top/htop alternative. Run it with:
-
-    btm
-
-Install with:
-
-    cargo install bottom
-
 # fzf
 
 [github](https://github.com/junegunn/fzf)
@@ -124,38 +112,6 @@ To get a nice display of what's taking up space inside that folder.
 Installation options:
 
     cargo install du-dust
-
-# deno
-
-[github](https://github.com/denoland/deno)
-
-A standalone sandboxed javascript/typescript runtime that makes writing quick
-and fast scripts a breeze.
-
-Here's a quick example that connects to a local postgres db and runs a query:
-
-```javascript
-import { Client } from "https://deno.land/x/postgres/mod.ts";
-
-async function main() {
-  const client = new Client({
-    user: "user",
-    database: "test",
-    host: "localhost",
-    port: "5432",
-  });
-  await client.connect();
-  const result = await client.query("SELECT * FROM people;");
-  console.log(result.rows);
-  await client.end();
-}
-
-main();
-```
-
-Installation options:
-
-    curl -fsSL https://deno.land/x/install/install.sh | sh
 
 # syncthing
 
