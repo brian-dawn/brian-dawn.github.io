@@ -72,7 +72,8 @@ ssh access. Run with docker:
 docker run -d --restart always \
     --name sshb0t \
     -v ${HOME}/.ssh/authorized_keys:/root/.ssh/authorized_keys \
-    r.j3ss.co/sshb0t --user [YOUR GITHUB USERNAME HERE] --keyfile /root/.ssh/authorized_keys
+    r.j3ss.co/sshb0t --user [YOUR GITHUB USERNAME HERE] \
+    --keyfile /root/.ssh/authorized_keys
 ```
 
 # fzf
