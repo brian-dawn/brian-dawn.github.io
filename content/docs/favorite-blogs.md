@@ -1,5 +1,5 @@
 +++
-title = "Some of my favorite things"
+title = "Some of my favorite blogs"
 date = 2020-07-29
 +++
 
