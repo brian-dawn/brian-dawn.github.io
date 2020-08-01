@@ -76,6 +76,16 @@ docker run -d --restart always \
     --keyfile /root/.ssh/authorized_keys
 ```
 
+# fd
+
+[github](https://github.com/sharkdp/fd)
+
+A convenient and fast alternative to `find`.
+
+Installation options:
+
+    cargo install fd-find
+
 # fzf
 
 [github](https://github.com/junegunn/fzf)
