@@ -150,3 +150,13 @@ For a good example of some nice CSS check out this [gist](https://gist.github.co
 # ipfs
 
 A peer to peer hypermedia protocol.
+
+# tealdeer
+
+[github](https://github.com/dbrgn/tealdeer)
+
+Fetch quick examples about particular unix commands.
+
+Install with:
+
+    cargo install tealdeer
