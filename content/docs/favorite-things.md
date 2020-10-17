@@ -160,3 +160,9 @@ Fetch quick examples about particular unix commands.
 Install with:
 
     cargo install tealdeer
+
+# rclone
+
+[github](https://github.com/rclone/rclone)
+
+Cloud storage swiss army knife.
