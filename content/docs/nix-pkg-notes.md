@@ -7,7 +7,12 @@ date = 2020-11-28
 
 Nix is a package management tool.
 
-# How do I search for packages?
+Here are some [helpful](https://nixos.org/guides/nix-pills/) beginner
+[resources](https://github.com/justinwoo/nix-shorts).
+
+## Nix CLI Basics
+
+### How do I search for packages?
 
 You can use the new nix command:
 
@@ -17,7 +22,7 @@ Or:
 
     nix-env -qa ripgrep
 
-# How do I install a package?
+### How do I install a package?
 
 Install:
 
@@ -27,46 +32,49 @@ Uninstall:
 
     nix-env -u ripgrep
 
-# How do I test out a package?
+### How do I test out a package?
 
 The following command will drop you into a shell with `ripgrep` and `vim` installed:
 
     nix-shell -p ripgrep -p vim
 
-# How do I upgrade all packages for which there is a newer version?
+You can also use `nix run` to do this:
+
+    nix run nixpkgs.python38 -c python
+
+### How do I upgrade all packages for which there is a newer version?
 
     nix-env -u
 
-# I screwed up with nix-env what do I do?
+### I screwed up with nix-env what do I do?
 
 Any nix-env operation can be rolled back with:
 
     nix-env --rollback
 
-# How do I clean the store?
+### How do I clean the store?
 
     nix-collect-garbage -d
 
 # Using nixpkg to manage a python project
 
-Make a file called `shell.nix` in the root of your python project. Inside put:
+Make a file called `default.nix` in the root of your python project. Inside put:
 
 ```nix
-let
-  pkgs = import <nixpkgs> {};
-in
-  pkgs.mkShell {
-    name = "simpleEnv";
-    buildInputs = with pkgs; [
+with import<nixpkgs> {};
+stdenv.mkDerivation rec {
+  src = ./.;
+  name = "mypythonproject";
+
+  buildInputs = with pkgs; [
+    # basic python dependencies
       python38
       python38Packages.numpy
       python38Packages.scikitlearn
       python38Packages.scipy
       python38Packages.matplotlib
-    ];
-   shellHook = ''
-      '';
-  }
+  ];
+}
 ```
 
 Now you can run:
@@ -87,7 +95,6 @@ You can get more info [here](https://josephsdavid.github.io/nix.html).
 You can use nix as a shell interpreter to allow for arbitrary scripts to fetch their own dependencies:
 
 ```python
-
 #! /usr/bin/env nix-shell
 #! nix-shell -i python -p python pythonPackages.prettytable
 
