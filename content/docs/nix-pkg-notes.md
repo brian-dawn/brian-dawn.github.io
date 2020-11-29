@@ -47,12 +47,6 @@ Any nix-env operation can be rolled back with:
 
     nix-collect-garbage -d
 
-# How do I live on the bleeding edge?
-
-You can subscribe to the nix unstable channel:
-
-    nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-
 # Using nixpkg to manage a python project
 
 Make a file called `shell.nix` in the root of your python project. Inside put:
@@ -107,6 +101,8 @@ print t
 
 More info [here](https://nixos.org/manual/nix/unstable/command-ref/nix-shell.html).
 
-## Testing a local python package example
+## Running a python repl with some dependencies
 
-    nix-shell /home/brian/repos/brian/nixpkgs -p 'python38.withPackages(ps: with ps; [pyrealsense2WithoutCuda ])'
+    nix-shell \
+        -p 'python38.withPackages(ps: with ps; [pyrealsense2WithoutCuda ])' \
+        --run python
