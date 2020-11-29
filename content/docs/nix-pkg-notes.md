@@ -10,7 +10,7 @@ Nix is a package management tool.
 Here are some [helpful](https://nixos.org/guides/nix-pills/) beginner
 [resources](https://github.com/justinwoo/nix-shorts).
 
-## Nix CLI Basics
+# Nix CLI Basics
 
 ### How do I search for packages?
 
@@ -56,7 +56,9 @@ Any nix-env operation can be rolled back with:
 
     nix-collect-garbage -d
 
-# Using nixpkg to manage a python project
+# More complex examples
+
+## Using nixpkg to manage a python project
 
 Make a file called `default.nix` in the root of your python project. Inside put:
 
@@ -90,7 +92,7 @@ If you don't want an interactive shell.
 
 You can get more info [here](https://josephsdavid.github.io/nix.html).
 
-# Using nix as a script interpreter
+## Using nix as a script interpreter
 
 You can use nix as a shell interpreter to allow for arbitrary scripts to fetch their own dependencies:
 
