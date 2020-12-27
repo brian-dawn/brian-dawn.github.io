@@ -12,7 +12,7 @@ body {
   line-height: 1.7;
   padding: 1em;
   margin: auto;
-  max-width: 42em;
+  max-width: 52em;
   background: #fefefe;
 }
 
@@ -61,7 +61,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #111;
+  color: #444;
   line-height: 125%;
   font-weight: 700;
 }
@@ -118,10 +118,6 @@ hr {
   padding: 0;
 }
 
-pre {
-  overflow-x: hidden;
-}
-
 pre,
 code,
 kbd,
@@ -131,10 +127,13 @@ samp {
 }
 
 pre {
-  border-left: 6px solid orange;
+  border-left: 6px solid #61aefe;
   padding: 1em;
   line-height: 1.2em;
   border-radius: 0.1em;
+
+  overflow-x: hidden;
+  color: #ccc;
 }
 
 b,
@@ -365,9 +364,6 @@ table td {
   body {
     color: #eee;
     background: #222;
-  }
-  pre {
-    color: #444;
   }
 
   a {

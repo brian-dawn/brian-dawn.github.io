@@ -14,7 +14,7 @@ build_search_index = false
 title = ""
 description = ""
 generate_feed = true
-highlight_theme = "gruvbox-light" # ayu light is also nice
+highlight_theme = "one-dark" # ayu light is also nice
 default_language = "en"
 
 [extra]
