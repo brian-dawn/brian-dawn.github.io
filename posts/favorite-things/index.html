@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>brian.dawn.lol</title>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Fira Code"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    
+    <style>
+      html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  color: #444;
+  font-family: Open Sans, sans-serif;
+  text-rendering: optimizeLegibility;
+  line-height: 1.7;
+  padding: 1em;
+  margin: auto;
+  max-width: 52em;
+  background: #ededed;
+}
+
+header {
+  margin-bottom: 8em;
+}
+
+footer {
+  margin-top: 5em;
+  text-align: right;
+}
+
+a {
+  color: #2562d4;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #2562d4;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  color: #2562d4;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+p {
+  margin: 1em 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #444;
+  line-height: 125%;
+  font-weight: 700;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 0.9em;
+}
+
+span {
+  &#x2F;* This fixes odd quirks with syntax highlighting in dockerfiles*&#x2F;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+blockquote {
+  color: #666666;
+  margin: 0;
+  padding-left: 3em;
+  border-left: 0.5em #eee solid;
+}
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  margin: 1em 0;
+  padding: 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: Fira Code, monospace;
+  font-size: 13px;
+}
+
+pre {
+  border-left: 6px solid #61aefe;
+  padding: 1em;
+  line-height: 1.2em;
+  border-radius: 0.1em;
+
+  overflow-x: hidden;
+  color: #ccc;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+ul,
+ol {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+}
+
+li p:last-child {
+  margin-bottom: 0;
+}
+
+ul ul,
+ol ol {
+  margin: 0.3em 0;
+}
+
+dl {
+  margin-bottom: 1em;
+}
+
+dt {
+  font-weight: bold;
+  margin-bottom: 0.8em;
+}
+
+dd {
+  margin: 0 0 0.8em 2em;
+}
+
+dd:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+figure {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+figure img {
+  border: none;
+  margin: 0 auto;
+}
+
+figcaption {
+  font-size: 0.8em;
+  font-style: italic;
+  margin: 0 0 0.8em;
+}
+
+table {
+  margin-bottom: 2em;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table th {
+  padding: 0.2em 1em;
+  background-color: #eee;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+table td {
+  padding: 0.2em 1em;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  vertical-align: top;
+}
+
+@media only screen and (min-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  pre,
+  code,
+  kbd,
+  samp {
+    font-family: Fira Code, monospace;
+    font-size: 11px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  pre,
+  code,
+  kbd,
+  samp {
+    font-family: Fira Code, monospace;
+    font-size: 13px;
+  }
+}
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  body {
+    font-size: 14pt;
+    max-width: 100%;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  hr {
+    height: 1px;
+    border: 0;
+    border-bottom: 1px solid black;
+  }
+
+  a[href]:after {
+    content: &quot; (&quot; attr(href) &quot;)&quot;;
+  }
+
+  abbr[title]:after {
+    content: &quot; (&quot; attr(title) &quot;)&quot;;
+  }
+
+  .ir a:after,
+  a[href^=&quot;javascript:&quot;]:after,
+  a[href^=&quot;#&quot;]:after {
+    content: &quot;&quot;;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page :left {
+    margin: 15mm 20mm 15mm 10mm;
+  }
+
+  @page :right {
+    margin: 15mm 10mm 15mm 20mm;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #eee;
+  }
+  body {
+    color: #eee;
+    background: #222;
+  }
+
+  a {
+    color: #7ac3ff;
+  }
+
+  a:visited {
+    color: #7ac3ff;
+  }
+
+  a:active {
+    color: #7ac3ff;
+  }
+}
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <a href="/">home</a>
+      •
+      <a href="/posts">posts</a>
+      •
+      <a href="/resume.html">resume</a>
+      •
+      <a href="https://sr.ht/~brian-dawn/">srht</a>
+      •
+      <a href="https://github.com/brian-dawn">github</a>
+      •
+      <a href="/atom.xml">feed</a>
+    </div>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  Some of my favorite things
+</h1>
+
+<p class="subtitle"><strong>2020-04-15</strong></p>
+
+<section>
+  <ul>
+    
+    <li>
+      <a href="#kitty">kitty</a>
+      
+    </li>
+    
+    <li>
+      <a href="#tunnelto">tunnelto</a>
+      
+    </li>
+    
+    <li>
+      <a href="#croc">croc</a>
+      
+    </li>
+    
+    <li>
+      <a href="#nvtop">nvtop</a>
+      
+    </li>
+    
+    <li>
+      <a href="#starship">starship</a>
+      
+    </li>
+    
+    <li>
+      <a href="#sshb0t">sshb0t</a>
+      
+    </li>
+    
+    <li>
+      <a href="#fd">fd</a>
+      
+    </li>
+    
+    <li>
+      <a href="#fzf">fzf</a>
+      
+    </li>
+    
+    <li>
+      <a href="#rg">rg</a>
+      
+    </li>
+    
+    <li>
+      <a href="#dust">dust</a>
+      
+    </li>
+    
+    <li>
+      <a href="#syncthing">syncthing</a>
+      
+    </li>
+    
+    <li>
+      <a href="#pandoc">pandoc</a>
+      
+    </li>
+    
+    <li>
+      <a href="#ipfs">ipfs</a>
+      
+    </li>
+    
+    <li>
+      <a href="#tealdeer">tealdeer</a>
+      
+    </li>
+    
+    <li>
+      <a href="#rclone">rclone</a>
+      
+    </li>
+    
+  </ul>
+</section>
+
+<p>This is a list of some of my favorite tools that are maybe lesser known. This file
+exists mostly so I can keep track of all the things I need to remember I have in my
+toolbelt.</p>
+<h1 id="kitty">kitty</h1>
+<p><a href="https://github.com/kovidgoyal/kitty">github</a></p>
+<p>A terminal emulator that is pretty fast and has window management.
+To see how great it is, just hit <code>ctrl+shift+enter</code> to get window splitting.
+Kitty is very configurable.</p>
+<p>Install with any of these:</p>
+<pre style="background-color:#2b303b;">
+<code>curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+sudo pacman -S kitty
+</code></pre><h1 id="tunnelto">tunnelto</h1>
+<p><a href="https://github.com/agrinman/tunnelto">github</a></p>
+<p>Expose a local HTTP server to the internet with a URL.</p>
+<p>Install with:</p>
+<pre style="background-color:#2b303b;">
+<code>cargo install tunnelto
+</code></pre><h1 id="croc">croc</h1>
+<p><a href="https://github.com/schollz/croc">github</a></p>
+<p>Send files/folders to someone else directly and easily.</p>
+<p>Install with any of these:</p>
+<pre style="background-color:#2b303b;">
+<code>curl https://getcroc.schollz.com | bash
+sudo pacman -S croc
+</code></pre><h1 id="nvtop">nvtop</h1>
+<p><a href="https://github.com/Syllo/nvtop">github</a></p>
+<p>Like htop but for GPUs.</p>
+<p>Install with:</p>
+<pre style="background-color:#2b303b;">
+<code>sudo pacman -S nvtop
+</code></pre><h1 id="starship">starship</h1>
+<p><a href="https://github.com/starship/starship">github</a></p>
+<p>A fancy and fast shell prompt.</p>
+<p>Install via:</p>
+<pre style="background-color:#2b303b;">
+<code>curl -fsSL https://starship.rs/install.sh | bash
+</code></pre><h1 id="sshb0t">sshb0t</h1>
+<p><a href="https://github.com/genuinetools/sshb0t">github</a></p>
+<p>Use this to keep authorized keys on servers for easier
+ssh access. Run with docker:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#abb2bf;">docker run -d --restart always \
+    --name sshb0t \
+    -v ${HOME}/.ssh/authorized_keys:/root/.ssh/authorized_keys \
+    r.j3ss.co/sshb0t --user [YOUR GITHUB USERNAME HERE] \
+    --keyfile /root/.ssh/authorized_keys
+</span></code></pre><h1 id="fd">fd</h1>
+<p><a href="https://github.com/sharkdp/fd">github</a></p>
+<p>A convenient and fast alternative to <code>find</code>.</p>
+<p>Installation options:</p>
+<pre style="background-color:#2b303b;">
+<code>cargo install fd-find
+</code></pre><h1 id="fzf">fzf</h1>
+<p><a href="https://github.com/junegunn/fzf">github</a></p>
+<p>A fuzzy file finder that can integrate with your shell to give you fuzzy searching with ctrl-t and ctrl-r.</p>
+<p>Installation options:</p>
+<pre style="background-color:#2b303b;">
+<code>brew install fzf &amp;&amp; $(brew --prefix)/opt/fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf &amp;&amp; ~/.fzf/install
+sudo pacman -S fzf
+</code></pre><h1 id="rg">rg</h1>
+<p><a href="https://github.com/BurntSushi/ripgrep">github</a></p>
+<p>Extremely fast searching of files and directories.</p>
+<p>Installation options:</p>
+<pre style="background-color:#2b303b;">
+<code>brew install ripgrep
+pacman -S ripgrep
+cargo install ripgrep
+</code></pre><h1 id="dust">dust</h1>
+<p><a href="https://github.com/bootandy/dust">github</a></p>
+<p>A better version of <code>du</code>. Run it just with:</p>
+<pre style="background-color:#2b303b;">
+<code>dust some-folder
+</code></pre>
+<p>To get a nice display of what's taking up space inside that folder.</p>
+<p>Installation options:</p>
+<pre style="background-color:#2b303b;">
+<code>cargo install du-dust
+</code></pre><h1 id="syncthing">syncthing</h1>
+<p><a href="https://github.com/syncthing/syncthing">github</a></p>
+<p>Think of it like a peer to peer dropbox clone. Your files only ever live on
+your devices.</p>
+<h1 id="pandoc">pandoc</h1>
+<p>Convert to and from a large number of markup formats. I like standalone html pages
+with embedded CSS. You can do this with the following command:</p>
+<pre style="background-color:#2b303b;">
+<code>pandoc --self-contained --table-of-contents --to html5+auto_identifiers
+       --standalone INPUT.md --output OUTPUT.html
+</code></pre>
+<p>This will even base64 encode included images and embed them into the resulting HTML.
+If you don't want a table of contents just leave off the flag. If you want to embed a CSS file add the following to the above
+command:</p>
+<pre style="background-color:#2b303b;">
+<code>--css=YOURCSS.css
+</code></pre>
+<p>For a good example of some nice CSS check out this <a href="https://gist.github.com/killercup/5917178">gist</a>. Also pandoc can generate HTML presentations from markdown.</p>
+<h1 id="ipfs">ipfs</h1>
+<p>A peer to peer hypermedia protocol.</p>
+<h1 id="tealdeer">tealdeer</h1>
+<p><a href="https://github.com/dbrgn/tealdeer">github</a></p>
+<p>Fetch quick examples about particular unix commands.</p>
+<p>Install with:</p>
+<pre style="background-color:#2b303b;">
+<code>cargo install tealdeer
+</code></pre><h1 id="rclone">rclone</h1>
+<p><a href="https://github.com/rclone/rclone">github</a></p>
+<p>Cloud storage swiss army knife.</p>
+
+
+</div>
+    </section>
+  </body>
+</html>
