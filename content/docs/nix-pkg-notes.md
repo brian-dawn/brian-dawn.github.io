@@ -115,3 +115,55 @@ More info [here](https://nixos.org/manual/nix/unstable/command-ref/nix-shell.htm
     nix-shell \
         -p 'python38.withPackages(ps: with ps; [pyrealsense2WithoutCuda ])' \
         --run python
+
+## Nix Flakes
+
+One of the issues so far with using Nix to manage a projects resources is that in things can still
+change between users depending on the Nix channel they are using. There is an experimental feature
+called Nix Flakes that a addresses these issues.
+
+For a much more in depth blogpost check out [this](https://www.tweag.io/blog/2020-05-25-flakes/).
+
+### A quick Nix Flakes demo
+
+NOTE: this section is very much a WIP.
+
+Create a new folder and inside it run:
+
+    nix flake init
+
+This will create a file called `flake.nix`. Lets update that file to look like:
+
+```nix
+{
+  description = "Demo Python Example";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixpkgs-unstable";
+    utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, nixpkgs, utils }: (utils.lib.eachSystem ["x86_64-linux" ] (system: rec {
+
+    packages = {
+      pythonEnv = nixpkgs.legacyPackages.${system}.python3.withPackages(ps: with ps; [ numpy pandas ]);
+    };
+
+    defaultPackage = packages.pythonEnv;
+    devShell = packages.pythonEnv.env;
+  }));
+}
+```
+
+Now lets drop into a shell with:
+
+    nix develop
+
+Nix should download the dependencies. You should eventually drop into a bash shell. From here you could open up your favorite IDE but for now lets check the current python path:
+
+    bash-4.4$ which python
+    /nix/store/p8s64wi8xbzspmfwpxach9dqvycz6ag2-python3-3.8.6-env/bin/python
+
+Neat. You also should notice that there's now a flake.lock file. This is pinning the exact versions of things.
+
+Note that this example refers to legacy nix package instead of flakes directly. I have to mess with these more since in theory you can host your own flakes on git and easily refer to them that way.
