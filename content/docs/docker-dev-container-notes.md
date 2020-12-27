@@ -1,11 +1,11 @@
 +++
-title = "Managing a cpp application with docker dev containers"
+title = "C++ Development with Docker"
 date = 2020-12-27
 +++
 
-# Why use docker for local development?
-
 This document assumes you know docker, cmake, and use VS code for development.
+
+# Why use docker for local development?
 
 I'll be honest. I do not like using docker for local development. I see something like Nix
 as being far more attractive in this area. That being said I think Docker is far easier to
@@ -14,7 +14,7 @@ use and understand so it can be easier to introduce to existing teams.
 Here's how I manage a C++ application with docker containers. It's very important to me that I get
 auto complete within vs code for this.
 
-# The Project
+# The project
 
 We're just going to be running the Ceres [helloworld](https://ceres-solver.googlesource.com/ceres-solver/+/master/examples/helloworld.cc).
 
@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 
 Next create `CMakeLists.txt` with the following contents:
 
-```
+```cmake
 cmake_minimum_required (VERSION 2.8.11)
 project (Example)
 
@@ -121,7 +121,7 @@ TARGET_LINK_LIBRARIES(example ${CERES_LIBRARIES})
 You can try building this if you wish, but we'll be using Docker to do it that way we can gurantee
 we have all the correct dependencies.
 
-# The Dockerfile
+# The dockerfile
 
 I fully take advantage of multi-stage docker builds. This lets use have a lean(er) result image.
 If you're not familiar with them check this [out](https://docs.docker.com/develop/develop-images/multistage-build/).

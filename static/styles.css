@@ -63,7 +63,6 @@ h5,
 h6 {
   color: #111;
   line-height: 125%;
-  margin-top: 2em;
   font-weight: 700;
 }
 
@@ -97,6 +96,11 @@ h6 {
   font-size: 0.9em;
 }
 
+span {
+  /* This fixes odd quirks with syntax highlighting in dockerfiles*/
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
 blockquote {
   color: #666666;
   margin: 0;
@@ -127,6 +131,7 @@ samp {
 }
 
 pre {
+  border-left: 6px solid orange;
   padding: 1em;
   line-height: 1.2em;
   border-radius: 0.1em;
