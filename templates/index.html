@@ -1,18 +1,6 @@
 {% extends "base.html" %} {% block content %}
-<p>
-  Hi I'm Brian. I probably won't write much.
-</p>
+<p>Hi I'm Brian. I probably won't write much.</p>
 
-<h4>Docs</h4>
-<p>I might frequently update these.</p>
-<ul>
-  {% set posts = get_section(path="docs/_index.md") %} {% for page in
-  posts.pages %}
-  <li>
-    <a href="{{ page.permalink }}">{{ page.title }}</a>
-  </li>
-  {% endfor %}
-</ul>
 <h4>Posts</h4>
 <ul>
   {% set posts = get_section(path="posts/_index.md") %} {% for page in
