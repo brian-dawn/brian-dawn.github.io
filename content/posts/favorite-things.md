@@ -20,6 +20,15 @@ Install with any of these:
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
     sudo pacman -S kitty
 
+# SingleFile
+
+[firefox](https://addons.mozilla.org/en-US/firefox/addon/single-file/)
+[chrome](https://chrome.google.com/webstore/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en)
+
+A browser extension that saves a webpage into a single standalone HTML file. This includes resources such as images (as far as
+I know it will base64 encode them into the html). I use this extension quite a bit. One of my least favorite things is when a webpage
+I have bookmarked goes away from the internet, so I use this tool to save webpages I want to reference later. E.g. recipes, docs, etc.
+
 # tunnelto
 
 [github](https://github.com/agrinman/tunnelto)
