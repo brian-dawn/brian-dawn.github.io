@@ -166,4 +166,4 @@ Nix should download the dependencies. You should eventually drop into a bash she
 
 Neat. You also should notice that there's now a flake.lock file. This is pinning the exact versions of things.
 
-Note that this example refers to legacy nix package instead of flakes directly. I have to mess with these more since in theory you can host your own flakes on git and easily refer to them that way.
+If you want to see a more comprehensive example involving poetry for easier python dependency management take a look [here](https://github.com/brian-dawn/nix-flake-poetry-example).
