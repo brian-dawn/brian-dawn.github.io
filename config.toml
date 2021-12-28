@@ -4,9 +4,6 @@ base_url = "https://brian.dawn.lol"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
 
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
@@ -14,8 +11,11 @@ build_search_index = false
 title = ""
 description = ""
 generate_feed = true
-highlight_theme = "one-dark" # ayu light is also nice
+
 default_language = "en"
+[markdown]
+highlight_code = true
+highlight_theme = "one-dark" # ayu light is also nice
 
 [extra]
 # Put all your custom variables here
