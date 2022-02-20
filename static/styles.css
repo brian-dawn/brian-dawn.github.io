@@ -9,9 +9,19 @@ body {
   font-family: Open Sans, sans-serif;
   text-rendering: optimizeLegibility;
   line-height: 1.7;
-  padding: 1em;
   margin: auto;
   max-width: 52em;
+}
+
+.sky {
+  background: linear-gradient(
+    to bottom,
+    #154277 0%,
+    #576e71 30%,
+    #e1c45e 70%,
+    #b26339 100%
+  );
+  height: 10em;
 }
 
 header {
@@ -24,12 +34,12 @@ footer {
 }
 
 a {
-  color: #83a598;
+  color: #98971a;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #83a598;
+  color: #98971a;
 }
 
 a:hover {
@@ -37,7 +47,7 @@ a:hover {
 }
 
 a:active {
-  color: #83a598;
+  color: #98971a;
   text-decoration: none;
 }
 
@@ -275,80 +285,6 @@ table td {
     font-size: 13px;
   }
 }
-@media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    filter: none !important;
-    -ms-filter: none !important;
-  }
-
-  body {
-    font-size: 14pt;
-    max-width: 100%;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  hr {
-    height: 1px;
-    border: 0;
-    border-bottom: 1px solid black;
-  }
-
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-  .ir a:after,
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
-    content: "";
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    padding-right: 1em;
-    page-break-inside: avoid;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  img {
-    max-width: 100% !important;
-  }
-
-  @page :left {
-    margin: 15mm 20mm 15mm 10mm;
-  }
-
-  @page :right {
-    margin: 15mm 10mm 15mm 20mm;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-}
 
 h1,
 h2,
@@ -356,21 +292,21 @@ h3,
 h4,
 h5,
 h6 {
-  color: #ebdbb2;
+  color: #282828;
 }
 body {
-  color: #ebdbb2;
-  background: #282828;
+  background: #ebdbb2;
+  color: #282828;
 }
 
 a {
-  color: #83a598;
+  color: #98971a;
 }
 
 a:visited {
-  color: #83a598;
+  color: #98971a;
 }
 
 a:active {
-  color: #83a598;
+  color: #98971a;
 }
