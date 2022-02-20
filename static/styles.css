@@ -6,14 +6,12 @@ html {
 }
 
 body {
-  color: #444;
   font-family: Open Sans, sans-serif;
   text-rendering: optimizeLegibility;
   line-height: 1.7;
   padding: 1em;
   margin: auto;
   max-width: 52em;
-  background: white;
 }
 
 header {
@@ -26,12 +24,12 @@ footer {
 }
 
 a {
-  color: #2562d4;
+  color: #83a598;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #2562d4;
+  color: #83a598;
 }
 
 a:hover {
@@ -39,7 +37,7 @@ a:hover {
 }
 
 a:active {
-  color: #2562d4;
+  color: #83a598;
   text-decoration: none;
 }
 
@@ -127,13 +125,13 @@ samp {
 }
 
 pre {
-  border-left: 6px solid #61aefe;
+  border-left: 6px solid #b8bb26;
   padding: 1em;
   line-height: 1.2em;
   border-radius: 0.1em;
 
   overflow-x: hidden;
-  color: #ccc;
+  color: #ebdbb2;
 }
 
 b,
@@ -352,29 +350,27 @@ table td {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: #eee;
-  }
-  body {
-    color: #eee;
-    background: #222;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ebdbb2;
+}
+body {
+  color: #ebdbb2;
+  background: #282828;
+}
 
-  a {
-    color: #7ac3ff;
-  }
+a {
+  color: #83a598;
+}
 
-  a:visited {
-    color: #7ac3ff;
-  }
+a:visited {
+  color: #83a598;
+}
 
-  a:active {
-    color: #7ac3ff;
-  }
+a:active {
+  color: #83a598;
 }

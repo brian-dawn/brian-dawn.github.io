@@ -15,7 +15,7 @@ generate_feed = true
 default_language = "en"
 [markdown]
 highlight_code = true
-highlight_theme = "one-dark" # ayu light is also nice
+highlight_theme = "gruvbox-dark" # ayu light is also nice
 
 [extra]
 # Put all your custom variables here
