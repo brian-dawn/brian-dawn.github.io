@@ -1,5 +1,4 @@
 html {
-  font-size: 100%;
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -20,9 +19,13 @@ body {
 
 }
 
+
 .sky {
   background-image: url("/header.png");
   height: 256px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 
@@ -267,32 +270,7 @@ table td {
   vertical-align: top;
 }
 
-@media only screen and (min-width: 480px) {
-  body {
-    font-size: 14px;
-  }
 
-  pre,
-  code,
-  kbd,
-  samp {
-    font-family: Fira Code, monospace;
-    font-size: 11px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  body {
-    font-size: 16px;
-  }
-
-  pre,
-  code,
-  kbd,
-  samp {
-    font-family: Fira Code, monospace;
-    font-size: 13px;
-  }
-}
 
 h1,
 h2,
@@ -317,4 +295,28 @@ a:visited {
 
 a:active {
   color: #98971a;
+}
+
+html {
+
+  font-size: 2em;
+}
+
+pre, code, kbd, samp {
+
+  font-size: .75em;
+  font-family: Fira Code, monospace;
+}
+
+@media only screen and (min-device-width: 480px){
+
+  html {
+    font-size: 1em;
+  }
+
+  pre, code, kbd, samp {
+
+    font-size: 1em;
+    font-family: Fira Code, monospace;
+  }
 }
