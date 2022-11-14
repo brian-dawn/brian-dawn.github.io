@@ -17,14 +17,8 @@ body {
 }
 
 .sky {
-  background: linear-gradient(
-    to bottom,
-    #154277 0%,
-    #576e71 30%,
-    #e1c45e 70%,
-    #b26339 100%
-  );
-  height: 10em;
+  background-image: url("/header.png");
+  height: 256px;
 }
 
 .navbar {
