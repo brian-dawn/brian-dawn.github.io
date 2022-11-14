@@ -7,10 +7,6 @@ This document assumes you know docker, cmake, and use VS code for development.
 
 # Why use docker for local development?
 
-I'll be honest. I do not like using docker for local development. I see something like Nix
-as being far more attractive in this area. That being said I think Docker is far easier to
-use and understand so it can be easier to introduce to existing teams.
-
 Here's how I manage a C++ application with docker containers. It's very important to me that I get
 auto complete within vs code for this.
 
