@@ -14,10 +14,7 @@
       rel="stylesheet"
       type="text/css"
     />
-    {% set css = load_data(path="static/styles.css") %}
-    <style>
-      {{css}}
-    </style>
+    <link href="/styles.css" rel="stylesheet" />
   </head>
 
   <div id="space" class="sky" , height="10em">
@@ -28,7 +25,7 @@
     <div class="stars"></div>
   </div>
   <body>
-    <div>
+    <div class="navbar">
       <a href="/">home</a>
       •
       <a href="/posts">posts</a>
