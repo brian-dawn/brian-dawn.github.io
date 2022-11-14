@@ -7,19 +7,6 @@ This is a list of some of my favorite tools that are maybe lesser known. This fi
 exists mostly so I can keep track of all the things I need to remember I have in my
 toolbelt.
 
-# kitty
-
-[github](https://github.com/kovidgoyal/kitty)
-
-A terminal emulator that is pretty fast and has window management.
-To see how great it is, just hit `ctrl+shift+enter` to get window splitting.
-Kitty is very configurable.
-
-Install with any of these:
-
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-    sudo pacman -S kitty
-
 # SingleFile
 
 [firefox](https://addons.mozilla.org/en-US/firefox/addon/single-file/)
@@ -28,16 +15,6 @@ Install with any of these:
 A browser extension that saves a webpage into a single standalone HTML file. This includes resources such as images (as far as
 I know it will base64 encode them into the html). I use this extension quite a bit. One of my least favorite things is when a webpage
 I have bookmarked goes away from the internet, so I use this tool to save webpages I want to reference later. E.g. recipes, docs, etc.
-
-# tunnelto
-
-[github](https://github.com/agrinman/tunnelto)
-
-Expose a local HTTP server to the internet with a URL.
-
-Install with:
-
-    cargo install tunnelto
 
 # croc
 
@@ -156,10 +133,6 @@ command:
 
 For a good example of some nice CSS check out this [gist](https://gist.github.com/killercup/5917178). Also pandoc can generate HTML presentations from markdown.
 
-# ipfs
-
-A peer to peer hypermedia protocol.
-
 # tealdeer
 
 [github](https://github.com/dbrgn/tealdeer)
@@ -169,9 +142,3 @@ Fetch quick examples about particular unix commands.
 Install with:
 
     cargo install tealdeer
-
-# rclone
-
-[github](https://github.com/rclone/rclone)
-
-Cloud storage swiss army knife.
