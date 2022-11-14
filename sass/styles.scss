@@ -28,15 +28,6 @@ body {
   text-align: center;
 }
 
-header {
-  margin-bottom: 8em;
-}
-
-footer {
-  margin-top: 5em;
-  text-align: right;
-}
-
 a {
   color: #98971a;
   text-decoration: underline;
@@ -142,6 +133,8 @@ samp {
 }
 
 pre {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
   border-left: 6px solid #b8bb26;
   padding: 1em;
   line-height: 1.2em;
