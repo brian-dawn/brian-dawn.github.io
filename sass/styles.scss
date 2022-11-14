@@ -37,21 +37,13 @@ body {
   text-align: center;
 }
 
-a {
+a, a:visited, a:active {
   color: #98971a;
   text-decoration: underline;
 }
 
-a:visited {
-  color: #98971a;
-}
 
 a:hover {
-  text-decoration: none;
-}
-
-a:active {
-  color: #98971a;
   text-decoration: none;
 }
 
@@ -286,17 +278,6 @@ body {
   color: #282828;
 }
 
-a {
-  color: #98971a;
-}
-
-a:visited {
-  color: #98971a;
-}
-
-a:active {
-  color: #98971a;
-}
 
 html {
 
