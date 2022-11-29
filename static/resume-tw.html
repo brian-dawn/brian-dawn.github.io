@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @media print {
+        div,
+        p {
+          break-inside: avoid;
+        }
+      }
+    </style>
   </head>
   <body style="background: linear-gradient(to right, #323b4c 50%, #ddd 50%)">
     <div
@@ -21,9 +29,9 @@
             <div class="font-sans text-3xl">Brian Dawn</div>
 
             <div class="font-sans text-sm pt-4">
-              AWS, C++, Clojure, Docker, Git, Haskell, Java, Keras, Kotlin,
-              NextJs, Nix, Postgres, OpenCV, Python, PyTorch, React, Rust,
-              Sqlite, SSH, Tensorflow, Terraform, Typescript, Unix
+              AWS, C++, Clojure, Docker, Git, Haskell, Java, Kotlin, NextJs,
+              Nix, Postgres, OpenCV, Python, PyTorch, React, Rust, SQLite,
+              Tensorflow, Terraform, Typescript, Unix
             </div>
           </div>
         </div>
