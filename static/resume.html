@@ -1,241 +1,232 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      * {
-        font-family: Times New Roman;
-      }
-
-      div.header {
-        text-align: center;
-      }
-
-      div.name {
-        font-weight: bold;
-        font-size: 19px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        text-align: center;
-      }
-
-      div.date {
-        font-size: 13px;
-      }
-
-      div.company {
-        font-weight: bold;
-        white-space: nowrap;
-      }
-
-      div.title {
-        font-size: 13px;
-      }
-
-      div.description {
-        display: inline-block;
-      }
-
-      td {
-        vertical-align: top;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        text-align: left;
-      }
-
-      html,
-      body {
-        height: 297mm;
-        width: 210mm;
+      @media print {
+        div,
+        p {
+          break-inside: avoid;
+        }
       }
     </style>
   </head>
+  <body style="background: linear-gradient(to right, #323b4c 50%, #ddd 50%)">
+    <div
+      class="w-screen mr-auto ml-auto grid h-screen md:max-w-7xl md:grid-cols-12 print:inline-grid"
+    >
+      <div class="md:col-span-4" style="background: #323b4c">
+        <div class="col-span-1 pt-8 pr-4 pl-4">
+          <img
+            class="w-32 h-32 rounded-full mx-auto print:hidden"
+            src="https://en.gravatar.com/userimage/64484458/bbf6157caa2ef2b58846a07785a1367a.jpg?size=200"
+            alt="Rounded avatar"
+          />
 
-  <div class="name">Brian Dawn</div>
+          <div class="text-gray-100 text-center pt-4 pb-4">
+            <div class="font-sans text-3xl">Brian Dawn</div>
 
-  <div class="header">651-214-0203 &bull; brian.t.dawn@gmail.com</div>
-
-  <hr />
-  <table>
-    <tr>
-      <td>
-        <div class="company">Tools</div>
-      </td>
-      <td>
-        <div class="description">
-          AWS, C++, Clojure, Docker, Git, Haskell, Java, Keras, Kotlin, NextJs,
-          Nix, Postgres, OpenCV, Python, PyTorch, React, Rust, Sqlite, SSH,
-          Tensorflow, Terraform, Typescript, Unix
+            <div class="font-sans text-sm pt-4">
+              AWS, C++, Clojure, Docker, Git, Haskell, Java, Kotlin, NextJs,
+              Nix, Postgres, OpenCV, Python, PyTorch, React, Rust, SQLite,
+              Tensorflow, Terraform, Typescript, Unix
+            </div>
+          </div>
         </div>
-      </td>
-    </tr>
+      </div>
+      <div class="bg-gray-100 md:col-span-8 p-8 font-sans">
+        <div class="grid grid-cols-12 gap-12 print:inline-grid">
+          <!------------------------------->
 
-    <tr>
-      <td>
-        <div class="company">About Me</div>
-      </td>
-      <td>
-        <div class="description">
-          A polyglot programmer interested in learning new technologies and
-          paradigms, comfortable working on the backend, frontend, or
-          infrastructure.
-          <br /><br />
-          I believe all systems should strive to be simple, and by simple I mean
-          small.
-        </div>
-      </td>
-    </tr>
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">About</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              A polyglot programmer who likes static typecheckers,
+              infrastructure as code, and small well defined systems.
+            </p>
+          </div>
 
-    <tr>
-      <td>
-        <div class="company">Farm Vision Technologies</div>
-        <div class="date">July 2017 - present</div>
-        <div class="title">Chief Technology Officer</div>
-      </td>
-      <td>
-        <div class="description">
-          Designed, wrote, and iterated on product from the ground up to help
-          fruit growers estimate their crop yields prior to harvest.
-          <br /><br />
-          Work included an Android app to facilitate data collection, a full
-          stack app for data upload/viewing, and a horizontally scaleable
-          computer vision and machine learning data processing pipeline.
-          <br /><br />
-          All code was built using proper CI/CD practices and all infrastructure
-          defined in code with a careful balance toward maintaining high
-          velocity.
-          <br /><br />
-          Asssisted with overall business direction, grant proposal writing, and
-          business plans. Company was acquired near the end of 2022.
-        </div>
-      </td>
-    </tr>
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">METER Group</div>
+            <div class="text-xs text-center">Dec 2022 - Present</div>
+            <div class="text-xs text-center">Principal Software Engineer</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Worked on integration of Farm Vision IP into Pometa, a crop load
+              management tool.
+            </p>
 
-    <tr>
-      <td>
-        <div class="company">Kidblog</div>
-        <div class="date">Mar 2016 - July 2017</div>
-        <div class="title">Software Engineer</div>
-      </td>
-      <td>
-        <div class="description">
-          Backend engineer position at a small company working on a very large
-          Clojure codebase handling features, bugs, and performance tuning.
-          <br /><br />
-          Worked with distributed systems such as Hazelcast and Elasticsearch to
-          enable better response times in our webapp.
-          <br /><br />
-          Took on a leadership role in bringing CI/testing methodologies to the
-          team.
-          <br /><br />
-          Designed and facilitated a large data model change enabling new
-          business features with net code deletion.
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="company">ClojureBridge</div>
-        <div class="date">Dec 2014 - Jan 2020</div>
-        <div class="title">Volunteer</div>
-      </td>
-      <td>
-        <div class="description">
-          Volunteer for the ClojureBridge Minnesota Chapter. Wrote and taught
-          curriculum for both experienced and new programmers.
-        </div>
-      </td>
-    </tr>
+            <p class="pt-4">
+              Worked on building an iOS version of the previous Farm Vision
+              application with support for the iPhone pro LiDAR sensor to remove
+              a need for an external depth camera.
+            </p>
 
-    <tr>
-      <td>
-        <div class="company">Code42</div>
-        <div class="date">Apr 2014 - Nov 2015</div>
-        <div class="title">Software Engineer</div>
-      </td>
-      <td>
-        <div class="description">
-          Implemented features, security improvements, SQL optimizations, and
-          REST API additions against large Java server application.
-          <br /><br />
-          Architected an automated acceptance test suite in Ruby that grew to
-          see usage amongst engineering/QA and later became integrated with CI
-          pipeline.
-        </div>
-      </td>
-    </tr>
+            <p class="pt-4">More to come soon!</p>
+          </div>
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">
+              Farm Vision Technologies
+            </div>
+            <div class="text-xs text-center">July 2017 - Dec 2022</div>
+            <div class="text-xs text-center">Chief Technology Officer</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Designed, wrote, and iterated on product from the ground up to
+              help fruit growers estimate their crop yields prior to harvest.
+            </p>
+            <p class="pt-4">
+              Work included an Android app to facilitate data collection, a full
+              stack app for data upload/viewing, and a horizontally scaleable
+              computer vision and machine learning data processing pipeline.
+            </p>
 
-    <tr>
-      <td>
-        <div class="company">Seagate</div>
-        <div class="date">Jul 2013 - Mar 2014</div>
-        <div class="title">Firmware Engineer</div>
-      </td>
-      <td>
-        <div class="description">
-          Worked primarily in C and Python maintaining a cacheing mechanism hard
-          drives use to save data during emergency power outages. Had to debug
-          issues relating to firmware and hardware.
-        </div>
-      </td>
-    </tr>
+            <p class="pt-4">
+              All code was built using proper CI/CD practices and all
+              infrastructure defined in code with a careful balance toward
+              maintaining high velocity.
+            </p>
 
-    <tr>
-      <td>
-        <div class="company">QLogic Corporation</div>
-        <div class="date">Jul 2012 - Jun 2013</div>
-        <div class="title">Software Engineer</div>
-      </td>
-      <td>
-        <div class="description">
-          Developed test platforms in Python to test FibreChannel switches.
-          Worked on Firmware which was built atop a Linux stack in userspace
-          using BusyBox.
-        </div>
-      </td>
-    </tr>
+            <p class="pt-4">
+              Asssisted with overall business direction, grant proposal writing,
+              and business plans. Company was acquired by METER Group near the
+              end of 2022.
+            </p>
+          </div>
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">Kidblog</div>
+            <div class="text-xs text-center">Mar 2016 - July 2017</div>
+            <div class="text-xs text-center">Senior Software Engineer</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Backend engineer position at a small company working on a very
+              large Clojure codebase handling features, bugs, and performance
+              tuning.
+            </p>
+            <p class="pt-4">
+              Worked with distributed systems such as Hazelcast and
+              Elasticsearch to enable better response times in our webapp.
+            </p>
 
-    <tr>
-      <td>
-        <div class="company">Augsburg College</div>
-        <div class="date">Jul 2010 - Jun 2012</div>
-        <div class="title">Researcher</div>
-      </td>
-      <td>
-        <div class="description">
-          Designed, developed, and maintained a data acquisition and graphing
-          system for the PENGUIn Antarctic Research Project. The work involved
-          communicating with unmanned antarctic research stations via an Iridium
-          satellite modem, data gathering, graphing, processing, and backup.
-          Work was presented at UC Berkeley, and at MICS in 2012.
+            <p class="pt-4">
+              Took on a leadership role in bringing CI/testing methodologies to
+              the team.
+            </p>
 
-          <br /><br />
-          Worked on a research project that gathered atmospheric spectral data
-          using a suborbital payload that went aboard a rocket. Wrote the
-          firmware and built the circuitry for the payload.
-        </div>
-      </td>
-    </tr>
+            <p class="pt-4">
+              Designed and facilitated a large data model change enabling new
+              business features with net code deletion.
+            </p>
+          </div>
 
-    <tr>
-      <td>
-        <div class="company">Education</div>
-        <div class="date">Sep 2008 - May 2012</div>
-        <div class="title">Augsburg College</div>
-      </td>
-      <td>
-        <div class="description">
-          B.S. Computer Science
-          <br />
-          B.A. Physics
-          <br />
-          Minor Mathematics
-          <br />
-          Honors in Computer science
-          <br />
-          Physics Honor Society - Sigma Pi Sigma
-          <br />
-          Overall GPA: 3.45
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">Clojurebridge</div>
+            <div class="text-xs text-center">Dec 2014 - Jan 2020</div>
+            <div class="text-xs text-center">Volunteer</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Volunteer for the ClojureBridge Minnesota Chapter. Wrote and
+              taught curriculum for both experienced and new programmers.
+            </p>
+          </div>
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">Code42</div>
+            <div class="text-xs text-center">Apr 2014 - Nov 2015</div>
+            <div class="text-xs text-center">Software Engineer</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Implemented features, security improvements, SQL optimizations,
+              and REST API additions against large Java server application.
+            </p>
+            <p class="pt-4">
+              Architected an automated acceptance test suite in Ruby that grew
+              to see usage amongst engineering/QA and later became integrated
+              with CI pipeline.
+            </p>
+          </div>
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">Seagate</div>
+            <div class="text-xs text-center">Jul 2013 - Mar 2014</div>
+            <div class="text-xs text-center">Firmware Engineer</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Worked primarily in C and Python maintaining a cacheing mechanism
+              hard drives use to save data during emergency power outages. Had
+              to debug issues relating to firmware and hardware.
+            </p>
+          </div>
+
+          <!------------------------------->
+
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">QLogic Corporation</div>
+            <div class="text-xs text-center">Jul 2012 - Jun 2013</div>
+            <div class="text-xs text-center">Firmware Engineer</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Developed test platforms in Python to test FibreChannel switches.
+              Worked on Firmware which was built atop a Linux stack in userspace
+              using BusyBox.
+            </p>
+          </div>
+
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">Augsburg University</div>
+            <div class="text-xs text-center">Jul 2010 - Jun 2012</div>
+            <div class="text-xs text-center">Researcher</div>
+          </div>
+          <div class="col-span-8">
+            <p>
+              Designed, developed, and maintained a data acquisition and
+              graphing system for the PENGUIn Antarctic Research Project. The
+              work involved communicating with unmanned antarctic research
+              stations via an Iridium satellite modem, data gathering, graphing,
+              processing, and backup. Work was presented at UC Berkeley, and at
+              MICS in 2012.
+            </p>
+            <p class="pt-4">
+              Worked on a research project that gathered atmospheric spectral
+              data using a suborbital payload that went aboard a rocket. Wrote
+              the firmware and built the circuitry for the payload.
+            </p>
+          </div>
+
+          <!------------------------------->
+          <div class="col-span-4">
+            <div class="text-lg font-bold text-center">Education</div>
+            <div class="text-xs text-center">Sep 2008 - May 2012</div>
+            <div class="text-xs text-center">Augsburg College</div>
+          </div>
+          <div class="col-span-8">
+            <ul class="list-disc">
+              <li>B.S. Computer Science</li>
+              <li>B.A. Physics</li>
+              <li>Minor Mathematics</li>
+              <li>Honors in Computer science</li>
+              <li>Physics Honor Society - Sigma Pi Sigma</li>
+              <li>Overall GPA: 3.45</li>
+            </ul>
+          </div>
         </div>
-      </td>
-    </tr>
-  </table>
+      </div>
+    </div>
+  </body>
 </html>
