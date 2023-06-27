@@ -24,9 +24,6 @@ Others:
 Update your `.bashrc` file to load pyenv:
 
 ```bash
-# Pyenv shell integration
-# Load pyenv automatically by appending
-# the following to
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
