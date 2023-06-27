@@ -105,8 +105,8 @@ We can validate that this worked by dropping into a python shell:
 Now lets import numpy:
 
 ```python
-    import numpy as np
-    exit()
+import numpy as np
+exit()
 ```
 
 Another way we can do this is by installing directly with pip, lets install a code formatter called `black`:
