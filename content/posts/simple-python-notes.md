@@ -101,8 +101,13 @@ If you don't care about the version you could just say `numpy` but I recommend f
 We can validate that this worked by dropping into a python shell:
 
     python
+
+Now lets import numpy:
+
+```python
     import numpy as np
     exit()
+```
 
 Another way we can do this is by installing directly with pip, lets install a code formatter called `black`:
 
