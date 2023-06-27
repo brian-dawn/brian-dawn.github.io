@@ -202,3 +202,11 @@ Now run:
     mypy .
 
 And you should see the type error.
+
+## Debugging
+
+Python ships with a library called pdb, you can use it in your code like:
+
+    import pdb; pdb.set_trace()
+
+Now just run your code and you'll drop into the debugger when you hit the trace point.
