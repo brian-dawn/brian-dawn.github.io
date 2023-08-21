@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://brian.dawn.lol/</loc>
+    </url>
+    <url>
+        <loc>https://brian.dawn.lol/posts/</loc>
+    </url>
+    <url>
+        <loc>https://brian.dawn.lol/posts/docker-dev-container-notes/</loc>
+        <lastmod>2020-12-27</lastmod>
+    </url>
+    <url>
+        <loc>https://brian.dawn.lol/posts/favorite-things/</loc>
+        <lastmod>2020-04-15</lastmod>
+    </url>
+    <url>
+        <loc>https://brian.dawn.lol/posts/managing-my-dotfiles/</loc>
+        <lastmod>2020-06-12</lastmod>
+    </url>
+    <url>
+        <loc>https://brian.dawn.lol/posts/nix-pkg-notes/</loc>
+        <lastmod>2020-11-28</lastmod>
+    </url>
+    <url>
+        <loc>https://brian.dawn.lol/posts/simple-python-notes/</loc>
+        <lastmod>2023-06-27</lastmod>
+    </url>
+</urlset>

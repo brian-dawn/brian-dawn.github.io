@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>brian.dawn.lol</title>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Fira Code"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+
+  <div id="space" class="sky" height="256px"></div>
+  <body>
+    <div class="navbar">
+      <a href="/">home</a>
+      •
+      <a href="/resume">resume</a>
+      •
+      <a href="https://sr.ht/~brian-dawn/">srht</a>
+      •
+      <a href="https://github.com/brian-dawn">github</a>
+      •
+      <a href="/atom.xml">feed</a>
+    </div>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  How I manage my dotfiles
+</h1>
+
+<p class="subtitle"><strong>2020-06-12</strong></p>
+
+<section>
+  <ul>
+    
+  </ul>
+</section>
+
+<p>Over the years I've used several different methods of tracking my dotfiles. I've been using a specific method
+of leveraging git that I have been using for many years now without change. Running <code>git init</code> inside your
+home directory is not ideal because it means that your tools will always think you are inside a git repo
+anywhere that you are. All credit for this method goes to user StreakyCobra on the
+<a href="https://news.ycombinator.com/item?id=11070797">dreaded orange site</a>.</p>
+<p>With that said here's what I did to start using this way of doing things:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>git init --bare $HOME/.dotfiles-repo
+</span><span>alias config=&#39;/usr/bin/git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME&#39;
+</span><span>config config status.showUntrackedFiles no
+</span></code></pre>
+<p>Then add:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>alias config=&#39;/usr/bin/git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME&#39;
+</span></code></pre>
+<p>To your bashrc to ensure you always get this alias. So we created a repo that's not at our home directory level, and then create a new alias command
+that uses that hidden repo as the working tree. What does this let us do?</p>
+<p>We can track new files with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>config status
+</span><span>config add .vimrc
+</span><span>config commit -m &quot;Add vimrc&quot;
+</span><span>config add .config/redshift.conf
+</span><span>config commit -m &quot;Add redshift config&quot;
+</span><span>config push
+</span></code></pre>
+<p>I use branches to track differences between my Linux and MacOS machines just like you would with regular git.</p>
+<p>On new machines you can do:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>git clone --bare [your-dotfiles-repo] $HOME/.dotfiles-repo
+</span></code></pre>
+<p>We need to create the same alias as before:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>alias config=&#39;/usr/bin/git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME&#39;
+</span></code></pre>
+<p>Now we are ready to initialize all our files from the repo. You can do this with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>config checkout
+</span></code></pre>
+<p>You will probably have file conflicts since git will refuse to overwrite files that already exist. You can either delete/backup these files by hand, or if you are like me and need an adrenaline rush you can just force overwrite them:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>config checkout -f
+</span></code></pre>
+<p>Finally we need to make it so we don't see every other file in our home directory
+that isn't tracked:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>config config status.showUntrackedFiles no
+</span></code></pre>
+<p>Now your system is ready to go!</p>
+
+
+</div>
+    </section>
+  </body>
+</html>

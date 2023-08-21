@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>brian.dawn.lol</title>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Fira Code"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+
+  <div id="space" class="sky" height="256px"></div>
+  <body>
+    <div class="navbar">
+      <a href="/">home</a>
+      •
+      <a href="/resume">resume</a>
+      •
+      <a href="https://sr.ht/~brian-dawn/">srht</a>
+      •
+      <a href="https://github.com/brian-dawn">github</a>
+      •
+      <a href="/atom.xml">feed</a>
+    </div>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  C++ Development with Docker
+</h1>
+
+<p class="subtitle"><strong>2020-12-27</strong></p>
+
+<section>
+  <ul>
+    
+    <li>
+      <a href="#why-use-docker-for-local-development">Why use docker for local development?</a>
+      
+    </li>
+    
+    <li>
+      <a href="#the-project">The project</a>
+      
+    </li>
+    
+    <li>
+      <a href="#the-dockerfile">The dockerfile</a>
+      
+    </li>
+    
+    <li>
+      <a href="#the-dev-container">The dev container</a>
+      
+    </li>
+    
+  </ul>
+</section>
+
+<p>This document assumes you know docker, cmake, and use VS code for development.</p>
+<h1 id="why-use-docker-for-local-development">Why use docker for local development?</h1>
+<p>Here's how I manage a C++ application with docker containers. It's very important to me that I get
+auto complete within vs code for this.</p>
+<h1 id="the-project">The project</h1>
+<p>We're just going to be running the Ceres <a href="https://ceres-solver.googlesource.com/ceres-solver/+/master/examples/helloworld.cc">helloworld</a>.</p>
+<p>First create a folder we can work in. Create <code>src/main.cpp</code> with the following contents:</p>
+<pre data-lang="cpp" style="background-color:#fcf0ca;color:#282828aa;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#928374;">// Ceres Solver - A fast non-linear least squares minimizer
+</span><span style="font-style:italic;color:#928374;">// Copyright 2015 Google Inc. All rights reserved.
+</span><span style="font-style:italic;color:#928374;">// http://ceres-solver.org/
+</span><span style="font-style:italic;color:#928374;">//
+</span><span style="font-style:italic;color:#928374;">// Redistribution and use in source and binary forms, with or without
+</span><span style="font-style:italic;color:#928374;">// modification, are permitted provided that the following conditions are met:
+</span><span style="font-style:italic;color:#928374;">//
+</span><span style="font-style:italic;color:#928374;">// * Redistributions of source code must retain the above copyright notice,
+</span><span style="font-style:italic;color:#928374;">//   this list of conditions and the following disclaimer.
+</span><span style="font-style:italic;color:#928374;">// * Redistributions in binary form must reproduce the above copyright notice,
+</span><span style="font-style:italic;color:#928374;">//   this list of conditions and the following disclaimer in the documentation
+</span><span style="font-style:italic;color:#928374;">//   and/or other materials provided with the distribution.
+</span><span style="font-style:italic;color:#928374;">// * Neither the name of Google Inc. nor the names of its contributors may be
+</span><span style="font-style:italic;color:#928374;">//   used to endorse or promote products derived from this software without
+</span><span style="font-style:italic;color:#928374;">//   specific prior written permission.
+</span><span style="font-style:italic;color:#928374;">//
+</span><span style="font-style:italic;color:#928374;">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+</span><span style="font-style:italic;color:#928374;">// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+</span><span style="font-style:italic;color:#928374;">// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+</span><span style="font-style:italic;color:#928374;">// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+</span><span style="font-style:italic;color:#928374;">// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+</span><span style="font-style:italic;color:#928374;">// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+</span><span style="font-style:italic;color:#928374;">// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+</span><span style="font-style:italic;color:#928374;">// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+</span><span style="font-style:italic;color:#928374;">// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+</span><span style="font-style:italic;color:#928374;">// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+</span><span style="font-style:italic;color:#928374;">// POSSIBILITY OF SUCH DAMAGE.
+</span><span style="font-style:italic;color:#928374;">//
+</span><span style="font-style:italic;color:#928374;">// Author: keir@google.com (Keir Mierle)
+</span><span style="font-style:italic;color:#928374;">//
+</span><span style="font-style:italic;color:#928374;">// A simple example of using the Ceres minimizer.
+</span><span style="font-style:italic;color:#928374;">//
+</span><span style="font-style:italic;color:#928374;">// Minimize 0.5 (10 - x)^2 using jacobian matrix computed using
+</span><span style="font-style:italic;color:#928374;">// automatic differentiation.
+</span><span style="color:#9d0006;">#include </span><span style="color:#79740e;">&quot;ceres/ceres.h&quot;
+</span><span style="color:#9d0006;">#include </span><span style="color:#79740e;">&quot;glog/logging.h&quot;
+</span><span style="color:#9d0006;">using</span><span> ceres::AutoDiffCostFunction;
+</span><span style="color:#9d0006;">using</span><span> ceres::CostFunction;
+</span><span style="color:#9d0006;">using</span><span> ceres::Problem;
+</span><span style="color:#9d0006;">using</span><span> ceres::Solve;
+</span><span style="color:#9d0006;">using</span><span> ceres::Solver;
+</span><span style="font-style:italic;color:#928374;">// A templated cost functor that implements the residual r = 10 -
+</span><span style="font-style:italic;color:#928374;">// x. The method operator() is templated so that we can then use an
+</span><span style="font-style:italic;color:#928374;">// automatic differentiation wrapper around it to generate its
+</span><span style="font-style:italic;color:#928374;">// derivatives.
+</span><span style="color:#9d0006;">struct </span><span style="color:#407959;">CostFunctor </span><span>{
+</span><span>  </span><span style="color:#9d0006;">template </span><span>&lt;</span><span style="color:#9d0006;">typename</span><span> T&gt;
+</span><span>  </span><span style="color:#9d0006;">bool </span><span style="color:#407959;">operator()</span><span>(</span><span style="color:#9d0006;">const</span><span> T</span><span style="color:#b23c15;">* </span><span style="color:#9d0006;">const </span><span style="color:#282828;">x</span><span>, T</span><span style="color:#b23c15;">* </span><span style="color:#282828;">residual</span><span>) </span><span style="color:#9d0006;">const </span><span>{
+</span><span>    residual[</span><span style="color:#8f3f71;">0</span><span>] </span><span style="color:#b23c15;">= </span><span style="color:#8f3f71;">10.0 </span><span style="color:#b23c15;">-</span><span> x[</span><span style="color:#8f3f71;">0</span><span>];
+</span><span>    </span><span style="color:#9d0006;">return </span><span style="color:#8f3f71;">true</span><span>;
+</span><span>  }
+</span><span>};
+</span><span style="color:#9d0006;">int </span><span style="color:#407959;">main</span><span>(</span><span style="color:#9d0006;">int </span><span style="color:#282828;">argc</span><span>, </span><span style="color:#9d0006;">char</span><span style="color:#b23c15;">** </span><span style="color:#282828;">argv</span><span>) {
+</span><span>  </span><span style="color:#282828;">google::InitGoogleLogging(argv[</span><span style="color:#8f3f71;">0</span><span style="color:#282828;">])</span><span>;
+</span><span>  </span><span style="font-style:italic;color:#928374;">// The variable to solve for with its initial value. It will be
+</span><span>  </span><span style="font-style:italic;color:#928374;">// mutated in place by the solver.
+</span><span>  </span><span style="color:#9d0006;">double</span><span> x </span><span style="color:#b23c15;">= </span><span style="color:#8f3f71;">0.5</span><span>;
+</span><span>  </span><span style="color:#9d0006;">const double</span><span> initial_x </span><span style="color:#b23c15;">=</span><span> x;
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Build the problem.
+</span><span>  Problem problem;
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Set up the only cost function (also known as residual). This uses
+</span><span>  </span><span style="font-style:italic;color:#928374;">// auto-differentiation to obtain the derivative (jacobian).
+</span><span>  CostFunction</span><span style="color:#b23c15;">*</span><span> cost_function </span><span style="color:#b23c15;">=
+</span><span>      </span><span style="color:#9d0006;">new </span><span style="color:#282828;">AutoDiffCostFunction&lt;CostFunctor, </span><span style="color:#8f3f71;">1</span><span style="color:#282828;">, </span><span style="color:#8f3f71;">1</span><span style="color:#282828;">&gt;(</span><span style="color:#9d0006;">new</span><span style="color:#282828;"> CostFunctor)</span><span>;
+</span><span>  problem.</span><span style="color:#282828;">AddResidualBlock</span><span>(cost_function, </span><span style="color:#8f3f71;">nullptr</span><span>, </span><span style="color:#b23c15;">&amp;</span><span>x);
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Run the solver!
+</span><span>  Solver::Options options;
+</span><span>  options.</span><span style="color:#282828;">minimizer_progress_to_stdout </span><span style="color:#b23c15;">= </span><span style="color:#8f3f71;">true</span><span>;
+</span><span>  Solver::Summary summary;
+</span><span>  </span><span style="color:#282828;">Solve(options, </span><span style="color:#b23c15;">&amp;</span><span style="color:#282828;">problem, </span><span style="color:#b23c15;">&amp;</span><span style="color:#282828;">summary)</span><span>;
+</span><span>  std::cout </span><span style="color:#b23c15;">&lt;&lt;</span><span> summary.</span><span style="color:#282828;">BriefReport</span><span>() </span><span style="color:#b23c15;">&lt;&lt; </span><span style="color:#79740e;">&quot;\n&quot;</span><span>;
+</span><span>  std::cout </span><span style="color:#b23c15;">&lt;&lt; </span><span style="color:#79740e;">&quot;x : &quot; </span><span style="color:#b23c15;">&lt;&lt;</span><span> initial_x </span><span style="color:#b23c15;">&lt;&lt; </span><span style="color:#79740e;">&quot; -&gt; &quot; </span><span style="color:#b23c15;">&lt;&lt;</span><span> x </span><span style="color:#b23c15;">&lt;&lt; </span><span style="color:#79740e;">&quot;\n&quot;</span><span>;
+</span><span>  </span><span style="color:#9d0006;">return </span><span style="color:#8f3f71;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<p>Next create <code>CMakeLists.txt</code> with the following contents:</p>
+<pre data-lang="cmake" style="background-color:#fcf0ca;color:#282828aa;" class="language-cmake "><code class="language-cmake" data-lang="cmake"><span style="color:#b57614;">cmake_minimum_required </span><span style="color:#282828;">(VERSION 2.8.11)
+</span><span style="color:#b57614;">project </span><span style="color:#282828;">(Example)
+</span><span>
+</span><span style="color:#b57614;">FIND_PACKAGE</span><span style="color:#282828;">(Eigen3 REQUIRED)
+</span><span style="color:#b57614;">FIND_PACKAGE</span><span style="color:#282828;">(OpenMP REQUIRED)
+</span><span style="color:#b57614;">FIND_PACKAGE</span><span style="color:#282828;">(BLAS REQUIRED)
+</span><span style="color:#b57614;">FIND_PACKAGE</span><span style="color:#282828;">(Ceres REQUIRED)
+</span><span>
+</span><span style="color:#b57614;">INCLUDE_DIRECTORIES</span><span style="color:#282828;">(${CERES_INCLUDE_DIRS})
+</span><span style="color:#b57614;">INCLUDE_DIRECTORIES</span><span style="color:#282828;">(${EIGEN3_INCLUDE_DIR})
+</span><span>
+</span><span style="color:#b57614;">FILE</span><span style="color:#282828;">(GLOB SOURCES </span><span style="color:#79740e;">&quot;src/*.cpp&quot;</span><span style="color:#282828;">)
+</span><span>
+</span><span style="color:#b57614;">ADD_EXECUTABLE</span><span style="color:#282828;">(example ${SOURCES})
+</span><span>
+</span><span style="color:#b57614;">TARGET_LINK_LIBRARIES</span><span style="color:#282828;">(example ${CERES_LIBRARIES})
+</span></code></pre>
+<p>You can try building this if you wish, but we'll be using Docker to do it that way we can gurantee
+we have all the correct dependencies.</p>
+<h1 id="the-dockerfile">The dockerfile</h1>
+<p>I fully take advantage of multi-stage docker builds. This lets use have a lean(er) result image.
+If you're not familiar with them check this <a href="https://docs.docker.com/develop/develop-images/multistage-build/">out</a>.</p>
+<p>Next lets create our <code>Dockerfile</code>.</p>
+<pre data-lang="dockerfile" style="background-color:#fcf0ca;color:#282828aa;" class="language-dockerfile "><code class="language-dockerfile" data-lang="dockerfile"><span style="font-style:italic;color:#928374;"># Setup the base image. This is where we&#39;ll setup
+</span><span style="font-style:italic;color:#928374;"># dependencies necessary for building our project.
+</span><span>
+</span><span style="color:#9d0006;">FROM</span><span> ubuntu:</span><span style="color:#407959;">20.04 </span><span style="color:#9d0006;">AS </span><span style="color:#282828;">dev-base
+</span><span>
+</span><span style="color:#9d0006;">RUN </span><span>apt-get update                             \
+</span><span>    &amp;&amp; DEBIAN_FRONTEND=noninteractive          \
+</span><span>    apt-get install --no-install-recommends -y \
+</span><span>    build-essential                            \
+</span><span>    gdb                                        \
+</span><span>    gcc                                        \
+</span><span>    g++                                        \
+</span><span>    cmake                                      \
+</span><span>    libeigen3-dev                              \
+</span><span>    libblas-dev                                \
+</span><span>    libceres-dev                               \
+</span><span>    libgoogle-glog-dev                         \
+</span><span>    &amp;&amp; apt-get clean autoclean                 \
+</span><span>    &amp;&amp; apt-get autoremove --yes                \
+</span><span>    &amp;&amp; rm -rf /var/lib{apt,dpkg,cache,log}
+</span><span>
+</span><span style="font-style:italic;color:#928374;"># This is the lean and mean release image. Ideally
+</span><span style="font-style:italic;color:#928374;"># we would use something like alpine instead of
+</span><span style="font-style:italic;color:#928374;"># Ubuntu but here we are.
+</span><span>
+</span><span style="color:#9d0006;">FROM</span><span> ubuntu:</span><span style="color:#407959;">20.04 </span><span style="color:#9d0006;">AS </span><span style="color:#282828;">release-base
+</span><span>
+</span><span style="color:#9d0006;">RUN </span><span>apt-get update                             \
+</span><span>    &amp;&amp; DEBIAN_FRONTEND=noninteractive          \
+</span><span>    apt-get install --no-install-recommends -y \
+</span><span>    libblas3                                   \
+</span><span>    libceres1                                  \
+</span><span>    &amp;&amp; apt-get clean autoclean                 \
+</span><span>    &amp;&amp; apt-get autoremove --yes                \
+</span><span>    &amp;&amp; rm -rf /var/lib{apt,dpkg,cache,log}
+</span><span>
+</span><span style="font-style:italic;color:#928374;"># The compile step.
+</span><span>
+</span><span style="color:#9d0006;">FROM</span><span> dev-base </span><span style="color:#9d0006;">AS </span><span style="color:#282828;">compiled
+</span><span>
+</span><span style="color:#9d0006;">COPY</span><span> . /code
+</span><span style="color:#9d0006;">WORKDIR </span><span>/code/build
+</span><span style="color:#9d0006;">RUN </span><span>cmake .. &amp;&amp; make -j$(nproc --all)
+</span><span>
+</span><span style="font-style:italic;color:#928374;"># The release step.
+</span><span>
+</span><span style="color:#9d0006;">FROM</span><span> release-base </span><span style="color:#9d0006;">AS </span><span style="color:#282828;">release
+</span><span>
+</span><span style="color:#9d0006;">COPY</span><span> --from=</span><span style="color:#282828;">compiled</span><span> /code/build/example /usr/local/bin/example
+</span><span style="color:#b23c15;">CMD </span><span>/usr/local/bin/example
+</span></code></pre>
+<p>We should be able to use docker to build it at this point:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>docker build -t example .
+</span></code></pre>
+<p>And when that completes we should be able to run it:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>docker run -it example
+</span></code></pre>
+<h1 id="the-dev-container">The dev container</h1>
+<p>Now we ideally want to be able to run VS code with the CPP extension setup so we get
+autocomplete.</p>
+<p>To do this we'll utilize <a href="https://code.visualstudio.com/docs/remote/containers">dev containers</a>.</p>
+<p>Create <code>.devcontainer/devcontainer.json</code> with the following contents:</p>
+<pre data-lang="json" style="background-color:#fcf0ca;color:#282828aa;" class="language-json "><code class="language-json" data-lang="json"><span style="font-style:italic;color:#928374;">// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+</span><span style="font-style:italic;color:#928374;">// https://github.com/microsoft/vscode-dev-containers/tree/v0.154.0/containers/docker-existing-dockerfile
+</span><span>{
+</span><span>  </span><span style="color:#79740e;">&quot;name&quot;</span><span>: </span><span style="color:#79740e;">&quot;Example dev project&quot;</span><span>,
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Sets the run context to one level up instead of the .devcontainer folder.
+</span><span>  </span><span style="color:#79740e;">&quot;context&quot;</span><span>: </span><span style="color:#79740e;">&quot;..&quot;</span><span>,
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Update the &#39;dockerFile&#39; property if you aren&#39;t using the standard &#39;Dockerfile&#39; filename.
+</span><span>  </span><span style="color:#79740e;">&quot;dockerFile&quot;</span><span>: </span><span style="color:#79740e;">&quot;../Dockerfile&quot;</span><span>,
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Set *default* container specific settings.json values on container create.
+</span><span>  </span><span style="color:#79740e;">&quot;settings&quot;</span><span>: {
+</span><span>    </span><span style="color:#79740e;">&quot;terminal.integrated.shell.linux&quot;</span><span>: </span><span style="color:#8f3f71;">null
+</span><span>  },
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Add the IDs of extensions you want installed when the container is created.
+</span><span>  </span><span style="color:#79740e;">&quot;extensions&quot;</span><span>: [</span><span style="color:#79740e;">&quot;ms-vscode.cpptools&quot;</span><span>, </span><span style="color:#79740e;">&quot;ms-vscode.cmake-tools&quot;</span><span>],
+</span><span>
+</span><span>  </span><span style="color:#79740e;">&quot;build&quot;</span><span>: {
+</span><span>    </span><span style="color:#79740e;">&quot;target&quot;</span><span>: </span><span style="color:#79740e;">&quot;dev-base&quot;
+</span><span>  },
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#928374;">// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+</span><span>  </span><span style="color:#79740e;">&quot;runArgs&quot;</span><span>: [</span><span style="color:#79740e;">&quot;--cap-add=SYS_PTRACE&quot;</span><span>, </span><span style="color:#79740e;">&quot;--security-opt&quot;</span><span>, </span><span style="color:#79740e;">&quot;seccomp=unconfined&quot;</span><span>]
+</span><span>}
+</span></code></pre>
+<p>Now when you launch vs code from this project you should get the option to start things in
+a dev container. Alternatively you can run the <code>Remote-Containers: Reopen in Container</code> command.</p>
+<p>You should now have a full CPP dev environment good to go. You should even be able to set breakpoints and run the debugger with the <code>CMake: Debug</code> command.</p>
+<p>For a full example I have a repo <a href="https://github.com/brian-dawn/cpp-dev-container-demo">here</a>.</p>
+
+
+</div>
+    </section>
+  </body>
+</html>

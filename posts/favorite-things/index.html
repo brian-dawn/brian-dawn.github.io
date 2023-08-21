@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>brian.dawn.lol</title>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Fira Code"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+
+  <div id="space" class="sky" height="256px"></div>
+  <body>
+    <div class="navbar">
+      <a href="/">home</a>
+      •
+      <a href="/resume">resume</a>
+      •
+      <a href="https://sr.ht/~brian-dawn/">srht</a>
+      •
+      <a href="https://github.com/brian-dawn">github</a>
+      •
+      <a href="/atom.xml">feed</a>
+    </div>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  Some of my favorite things
+</h1>
+
+<p class="subtitle"><strong>2020-04-15</strong></p>
+
+<section>
+  <ul>
+    
+    <li>
+      <a href="#singlefile">SingleFile</a>
+      
+    </li>
+    
+    <li>
+      <a href="#croc">croc</a>
+      
+    </li>
+    
+    <li>
+      <a href="#nvtop">nvtop</a>
+      
+    </li>
+    
+    <li>
+      <a href="#starship">starship</a>
+      
+    </li>
+    
+    <li>
+      <a href="#sshb0t">sshb0t</a>
+      
+    </li>
+    
+    <li>
+      <a href="#fd">fd</a>
+      
+    </li>
+    
+    <li>
+      <a href="#fzf">fzf</a>
+      
+    </li>
+    
+    <li>
+      <a href="#rg">rg</a>
+      
+    </li>
+    
+    <li>
+      <a href="#dust">dust</a>
+      
+    </li>
+    
+    <li>
+      <a href="#syncthing">syncthing</a>
+      
+    </li>
+    
+    <li>
+      <a href="#pandoc">pandoc</a>
+      
+    </li>
+    
+    <li>
+      <a href="#tealdeer">tealdeer</a>
+      
+    </li>
+    
+  </ul>
+</section>
+
+<p>This is a list of some of my favorite tools that are maybe lesser known. This file
+exists mostly so I can keep track of all the things I need to remember I have in my
+toolbelt.</p>
+<h1 id="singlefile">SingleFile</h1>
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/single-file/">firefox</a>
+<a href="https://chrome.google.com/webstore/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en">chrome</a></p>
+<p>A browser extension that saves a webpage into a single standalone HTML file. This includes resources such as images (as far as
+I know it will base64 encode them into the html). I use this extension quite a bit. One of my least favorite things is when a webpage
+I have bookmarked goes away from the internet, so I use this tool to save webpages I want to reference later. E.g. recipes, docs, etc.</p>
+<h1 id="croc">croc</h1>
+<p><a href="https://github.com/schollz/croc">github</a></p>
+<p>Send files/folders to someone else directly and easily.</p>
+<p>Install with any of these:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>curl https://getcroc.schollz.com | bash
+</span><span>sudo pacman -S croc
+</span></code></pre>
+<h1 id="nvtop">nvtop</h1>
+<p><a href="https://github.com/Syllo/nvtop">github</a></p>
+<p>Like htop but for GPUs.</p>
+<p>Install with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>sudo pacman -S nvtop
+</span></code></pre>
+<h1 id="starship">starship</h1>
+<p><a href="https://github.com/starship/starship">github</a></p>
+<p>A fancy and fast shell prompt.</p>
+<p>Install via:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>curl -fsSL https://starship.rs/install.sh | bash
+</span></code></pre>
+<h1 id="sshb0t">sshb0t</h1>
+<p><a href="https://github.com/genuinetools/sshb0t">github</a></p>
+<p>Use this to keep authorized keys on servers for easier
+ssh access. Run with docker:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>docker run -d --restart always \
+</span><span>    --name sshb0t \
+</span><span>    -v ${HOME}/.ssh/authorized_keys:/root/.ssh/authorized_keys \
+</span><span>    r.j3ss.co/sshb0t --user [YOUR GITHUB USERNAME HERE] \
+</span><span>    --keyfile /root/.ssh/authorized_keys
+</span></code></pre>
+<h1 id="fd">fd</h1>
+<p><a href="https://github.com/sharkdp/fd">github</a></p>
+<p>A convenient and fast alternative to <code>find</code>.</p>
+<p>Installation options:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>cargo install fd-find
+</span></code></pre>
+<h1 id="fzf">fzf</h1>
+<p><a href="https://github.com/junegunn/fzf">github</a></p>
+<p>A fuzzy file finder that can integrate with your shell to give you fuzzy searching with ctrl-t and ctrl-r.</p>
+<p>Installation options:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>brew install fzf &amp;&amp; $(brew --prefix)/opt/fzf/install
+</span><span>git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf &amp;&amp; ~/.fzf/install
+</span><span>sudo pacman -S fzf
+</span></code></pre>
+<h1 id="rg">rg</h1>
+<p><a href="https://github.com/BurntSushi/ripgrep">github</a></p>
+<p>Extremely fast searching of files and directories.</p>
+<p>Installation options:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>brew install ripgrep
+</span><span>pacman -S ripgrep
+</span><span>cargo install ripgrep
+</span></code></pre>
+<h1 id="dust">dust</h1>
+<p><a href="https://github.com/bootandy/dust">github</a></p>
+<p>A better version of <code>du</code>. Run it just with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>dust some-folder
+</span></code></pre>
+<p>To get a nice display of what's taking up space inside that folder.</p>
+<p>Installation options:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>cargo install du-dust
+</span></code></pre>
+<h1 id="syncthing">syncthing</h1>
+<p><a href="https://github.com/syncthing/syncthing">github</a></p>
+<p>Think of it like a peer to peer dropbox clone. Your files only ever live on
+your devices.</p>
+<h1 id="pandoc">pandoc</h1>
+<p>Convert to and from a large number of markup formats. I like standalone html pages
+with embedded CSS. You can do this with the following command:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pandoc --self-contained --table-of-contents --to html5+auto_identifiers
+</span><span>       --standalone INPUT.md --output OUTPUT.html
+</span></code></pre>
+<p>This will even base64 encode included images and embed them into the resulting HTML.
+If you don't want a table of contents just leave off the flag. If you want to embed a CSS file add the following to the above
+command:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>--css=YOURCSS.css
+</span></code></pre>
+<p>For a good example of some nice CSS check out this <a href="https://gist.github.com/killercup/5917178">gist</a>. Also pandoc can generate HTML presentations from markdown.</p>
+<h1 id="tealdeer">tealdeer</h1>
+<p><a href="https://github.com/dbrgn/tealdeer">github</a></p>
+<p>Fetch quick examples about particular unix commands.</p>
+<p>Install with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>cargo install tealdeer
+</span></code></pre>
+
+
+</div>
+    </section>
+  </body>
+</html>

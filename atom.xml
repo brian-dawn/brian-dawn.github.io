@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title></title>
+    <link href="https://brian.dawn.lol/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://brian.dawn.lol"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-06-27T00:00:00+00:00</updated>
+    <id>https://brian.dawn.lol/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Python Notes</title>
+        <published>2023-06-27T00:00:00+00:00</published>
+        <updated>2023-06-27T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://brian.dawn.lol/posts/simple-python-notes/" type="text/html"/>
+        <id>https://brian.dawn.lol/posts/simple-python-notes/</id>
+        
+        <content type="html">&lt;h1 id=&quot;guide&quot;&gt;Guide&lt;&#x2F;h1&gt;
+&lt;p&gt;As good as tools like poetry are here is my ultra minimal python guide.&lt;&#x2F;p&gt;
+&lt;p&gt;To make a long story short the only non-standard tool we&#x27;ll depend on is pyenv to manage our versions of python.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;project-management&quot;&gt;Project Management&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;install-pyenv&quot;&gt;Install pyenv&lt;&#x2F;h2&gt;
+&lt;p&gt;On macos:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;brew install pyenv
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Others:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;curl https:&#x2F;&#x2F;pyenv.run | bash
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Update your &lt;code&gt;.bashrc&lt;&#x2F;code&gt; file to load pyenv:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;PYENV_ROOT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&#x2F;.pyenv&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;command &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;-v pyenv &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;&#x2F;dev&#x2F;null &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;PYENV_ROOT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&#x2F;bin:$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;eval &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;$(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;pyenv init -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;)&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Source your &lt;code&gt;.bashrc&lt;&#x2F;code&gt; to load the changes:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;source ~&#x2F;.bashrc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;&#x2F;h2&gt;
+&lt;p&gt;Lets create a new folder for our test project:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;mkdir test-project
+&lt;&#x2F;span&gt;&lt;span&gt;cd test-project
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Lets use python 3.9. We can use pyenv to install it:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pyenv install 3.9.16
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We can create a &lt;code&gt;.python-version&lt;&#x2F;code&gt; file in the project which will auto
+load and set us on 3.9 when we cd into this directory with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pyenv local 3.9.16
+&lt;&#x2F;span&gt;&lt;span&gt;cat .python-version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We can verify that we are using the correct python version:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;python --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;creating-a-virtualenv-with-venv&quot;&gt;Creating a virtualenv with venv&lt;&#x2F;h2&gt;
+&lt;p&gt;Before we can write code and install packages we need to create what&#x27;s called a virtualenv. In the Python world
+you can sorta think of this like a sandbox where anything you do in it is contained just in the virtual environment.&lt;&#x2F;p&gt;
+&lt;p&gt;This will let us maintain separate versions of various packages if we need to.&lt;&#x2F;p&gt;
+&lt;p&gt;Create the virtualenv:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;python -m venv .venv
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This creates a folder called &lt;code&gt;.venv&lt;&#x2F;code&gt; which contains our virtual environment. We can activate it with the following:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;source .venv&#x2F;bin&#x2F;activate
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now all our python tools should be scoped to the virtualenv. Running:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;which python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Should show that our python is being sourced by the .venv folder. If you ever want to break free from the virtual environment
+you can run:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;deactivate
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;using-pip-inside-the-virtual-environment&quot;&gt;Using pip inside the virtual environment&lt;&#x2F;h2&gt;
+&lt;p&gt;Pip is used to install packages. It&#x27;s important to note that if you have not activated the virtual environment you will be using your
+global pip&#x2F;python environment.&lt;&#x2F;p&gt;
+&lt;p&gt;It is common to create a file called &lt;code&gt;requirements.txt&lt;&#x2F;code&gt; which contains our list of dependencies.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;touch requirements.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Lets install numpy, so add the following to &lt;code&gt;requirements.txt&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;numpy==1.24.4
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you don&#x27;t care about the version you could just say &lt;code&gt;numpy&lt;&#x2F;code&gt; but I recommend freezing the deps then which I describe later in this document. Now we can install things to the virtual environment with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install -r requirements.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We can validate that this worked by dropping into a python shell:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now lets import numpy:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;numpy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;np
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;exit()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Another way we can do this is by installing directly with pip, lets install a code formatter called &lt;code&gt;black&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install black
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The issue here though is if we want to pull the project down again we need to remember we installed this. We can leverage
+a command called &lt;code&gt;pip freeze&lt;&#x2F;code&gt; to export our environment back to the &lt;code&gt;requirements.txt&lt;&#x2F;code&gt; file.&lt;&#x2F;p&gt;
+&lt;p&gt;Go ahead and run:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip freeze
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You&#x27;ll see it also dumps out the transitive dependencies we would like to install as well. To avoid polluting our main &lt;code&gt;requirements.txt&lt;&#x2F;code&gt; file
+I like to store the frozen deps in a different file, but that&#x27;s up to you:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip freeze &amp;gt; requirements-frozen.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;using-vs-code&quot;&gt;Using VS Code&lt;&#x2F;h2&gt;
+&lt;p&gt;If you use VS code things should just work out of the box. You need to open the project while the virtual environment is activated:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;code .
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The correct python version as well as the virtual environment should be shown at the bottom right. If you create a new python file called &lt;code&gt;main.py&lt;&#x2F;code&gt;
+you should be able to insert the following program:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;numpy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;np
+&lt;&#x2F;span&gt;&lt;span&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;np.arange(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;15&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;).reshape(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(a)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You should have auto complete setup automatically at this point.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;common-tools-and-libraries&quot;&gt;Common tools and libraries&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;code-formatting&quot;&gt;Code formatting&lt;&#x2F;h2&gt;
+&lt;p&gt;I recommend using &lt;code&gt;black&lt;&#x2F;code&gt;. You can install&#x2F;use it with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install black
+&lt;&#x2F;span&gt;&lt;span&gt;black .
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Don&#x27;t forget to freeze it in your requirements file!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;linting&quot;&gt;Linting&lt;&#x2F;h2&gt;
+&lt;p&gt;I like &lt;code&gt;ruff&lt;&#x2F;code&gt;. You can install&#x2F;use it with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install ruff
+&lt;&#x2F;span&gt;&lt;span&gt;ruff .
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Don&#x27;t forget to freeze it in your requirements file!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tests&quot;&gt;Tests&lt;&#x2F;h2&gt;
+&lt;p&gt;I recommend &lt;code&gt;pytest&lt;&#x2F;code&gt;. Install it with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install pytest
+&lt;&#x2F;span&gt;&lt;span&gt;mkdir test
+&lt;&#x2F;span&gt;&lt;span&gt;touch test&#x2F;my_test.py
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Inside &lt;code&gt;my_test.py&lt;&#x2F;code&gt; add:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;test_failure&lt;&#x2F;span&gt;&lt;span&gt;():
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;assert &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;False
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now you can run:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pytest
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And you should see failures.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;typechecking&quot;&gt;Typechecking&lt;&#x2F;h2&gt;
+&lt;p&gt;Lets use &lt;code&gt;mypy&lt;&#x2F;code&gt; to test do typechecking. VS Code ships with its own which works well but here&#x27;s how we can
+check things via the CLI:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install mypy
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Lets add this function to our &lt;code&gt;main.py&lt;&#x2F;code&gt; file:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;type_checker_fail&lt;&#x2F;span&gt;&lt;span&gt;() -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;Hello World&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now run:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;mypy .
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And you should see the type error.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;debugging&quot;&gt;Debugging&lt;&#x2F;h2&gt;
+&lt;p&gt;Python ships with a library called pdb, you can use it in your code like:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;pdb; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;pdb.set_trace()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now just run your code and you&#x27;ll drop into the debugger when you hit the trace point.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>C++ Development with Docker</title>
+        <published>2020-12-27T00:00:00+00:00</published>
+        <updated>2020-12-27T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://brian.dawn.lol/posts/docker-dev-container-notes/" type="text/html"/>
+        <id>https://brian.dawn.lol/posts/docker-dev-container-notes/</id>
+        
+        <content type="html">&lt;p&gt;This document assumes you know docker, cmake, and use VS code for development.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;why-use-docker-for-local-development&quot;&gt;Why use docker for local development?&lt;&#x2F;h1&gt;
+&lt;p&gt;Here&#x27;s how I manage a C++ application with docker containers. It&#x27;s very important to me that I get
+auto complete within vs code for this.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-project&quot;&gt;The project&lt;&#x2F;h1&gt;
+&lt;p&gt;We&#x27;re just going to be running the Ceres &lt;a href=&quot;https:&#x2F;&#x2F;ceres-solver.googlesource.com&#x2F;ceres-solver&#x2F;+&#x2F;master&#x2F;examples&#x2F;helloworld.cc&quot;&gt;helloworld&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;First create a folder we can work in. Create &lt;code&gt;src&#x2F;main.cpp&lt;&#x2F;code&gt; with the following contents:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Ceres Solver - A fast non-linear least squares minimizer
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Copyright 2015 Google Inc. All rights reserved.
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; http:&#x2F;&#x2F;ceres-solver.org&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Redistribution and use in source and binary forms, with or without
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; modification, are permitted provided that the following conditions are met:
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; * Redistributions of source code must retain the above copyright notice,
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;   this list of conditions and the following disclaimer.
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; * Redistributions in binary form must reproduce the above copyright notice,
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;   this list of conditions and the following disclaimer in the documentation
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;   and&#x2F;or other materials provided with the distribution.
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; * Neither the name of Google Inc. nor the names of its contributors may be
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;   used to endorse or promote products derived from this software without
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;   specific prior written permission.
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &amp;quot;AS IS&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; POSSIBILITY OF SUCH DAMAGE.
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Author: keir@google.com (Keir Mierle)
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; A simple example of using the Ceres minimizer.
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Minimize 0.5 (10 - x)^2 using jacobian matrix computed using
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; automatic differentiation.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;ceres&#x2F;ceres.h&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;glog&#x2F;logging.h&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;using&lt;&#x2F;span&gt;&lt;span&gt; ceres::AutoDiffCostFunction;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;using&lt;&#x2F;span&gt;&lt;span&gt; ceres::CostFunction;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;using&lt;&#x2F;span&gt;&lt;span&gt; ceres::Problem;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;using&lt;&#x2F;span&gt;&lt;span&gt; ceres::Solve;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;using&lt;&#x2F;span&gt;&lt;span&gt; ceres::Solver;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; A templated cost functor that implements the residual r = 10 -
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; x. The method operator() is templated so that we can then use an
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; automatic differentiation wrapper around it to generate its
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; derivatives.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;CostFunctor &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;template &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;typename&lt;&#x2F;span&gt;&lt;span&gt; T&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;bool &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;operator()&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; T&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;, T&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;residual&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    residual[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;10.0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; x[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;];
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;argc&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;char&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;** &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;argv&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;google::InitGoogleLogging(argv[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;])&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; The variable to solve for with its initial value. It will be
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; mutated in place by the solver.
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;double&lt;&#x2F;span&gt;&lt;span&gt; x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;const double&lt;&#x2F;span&gt;&lt;span&gt; initial_x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; x;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Build the problem.
+&lt;&#x2F;span&gt;&lt;span&gt;  Problem problem;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Set up the only cost function (also known as residual). This uses
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; auto-differentiation to obtain the derivative (jacobian).
+&lt;&#x2F;span&gt;&lt;span&gt;  CostFunction&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span&gt; cost_function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;AutoDiffCostFunction&amp;lt;CostFunctor, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;&amp;gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt; CostFunctor)&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  problem.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;AddResidualBlock&lt;&#x2F;span&gt;&lt;span&gt;(cost_function, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;nullptr&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;x);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Run the solver!
+&lt;&#x2F;span&gt;&lt;span&gt;  Solver::Options options;
+&lt;&#x2F;span&gt;&lt;span&gt;  options.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;minimizer_progress_to_stdout &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  Solver::Summary summary;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;Solve(options, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;problem, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;summary)&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;lt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt; summary.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;BriefReport&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;\n&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;x : &amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;lt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt; initial_x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot; -&amp;gt; &amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;lt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt; x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;&amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;\n&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Next create &lt;code&gt;CMakeLists.txt&lt;&#x2F;code&gt; with the following contents:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cmake&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-cmake &quot;&gt;&lt;code class=&quot;language-cmake&quot; data-lang=&quot;cmake&quot;&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;cmake_minimum_required &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(VERSION 2.8.11)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;project &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(Example)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;FIND_PACKAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(Eigen3 REQUIRED)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;FIND_PACKAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(OpenMP REQUIRED)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;FIND_PACKAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(BLAS REQUIRED)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;FIND_PACKAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(Ceres REQUIRED)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;INCLUDE_DIRECTORIES&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(${CERES_INCLUDE_DIRS})
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;INCLUDE_DIRECTORIES&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(${EIGEN3_INCLUDE_DIR})
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;FILE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(GLOB SOURCES &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;src&#x2F;*.cpp&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;ADD_EXECUTABLE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(example ${SOURCES})
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;TARGET_LINK_LIBRARIES&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(example ${CERES_LIBRARIES})
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You can try building this if you wish, but we&#x27;ll be using Docker to do it that way we can gurantee
+we have all the correct dependencies.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-dockerfile&quot;&gt;The dockerfile&lt;&#x2F;h1&gt;
+&lt;p&gt;I fully take advantage of multi-stage docker builds. This lets use have a lean(er) result image.
+If you&#x27;re not familiar with them check this &lt;a href=&quot;https:&#x2F;&#x2F;docs.docker.com&#x2F;develop&#x2F;develop-images&#x2F;multistage-build&#x2F;&quot;&gt;out&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Next lets create our &lt;code&gt;Dockerfile&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;dockerfile&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-dockerfile &quot;&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# Setup the base image. This is where we&amp;#39;ll setup
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# dependencies necessary for building our project.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;FROM&lt;&#x2F;span&gt;&lt;span&gt; ubuntu:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;20.04 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;AS &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;dev-base
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;apt-get update                             \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; DEBIAN_FRONTEND=noninteractive          \
+&lt;&#x2F;span&gt;&lt;span&gt;    apt-get install --no-install-recommends -y \
+&lt;&#x2F;span&gt;&lt;span&gt;    build-essential                            \
+&lt;&#x2F;span&gt;&lt;span&gt;    gdb                                        \
+&lt;&#x2F;span&gt;&lt;span&gt;    gcc                                        \
+&lt;&#x2F;span&gt;&lt;span&gt;    g++                                        \
+&lt;&#x2F;span&gt;&lt;span&gt;    cmake                                      \
+&lt;&#x2F;span&gt;&lt;span&gt;    libeigen3-dev                              \
+&lt;&#x2F;span&gt;&lt;span&gt;    libblas-dev                                \
+&lt;&#x2F;span&gt;&lt;span&gt;    libceres-dev                               \
+&lt;&#x2F;span&gt;&lt;span&gt;    libgoogle-glog-dev                         \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get clean autoclean                 \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get autoremove --yes                \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; rm -rf &#x2F;var&#x2F;lib{apt,dpkg,cache,log}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# This is the lean and mean release image. Ideally
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# we would use something like alpine instead of
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# Ubuntu but here we are.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;FROM&lt;&#x2F;span&gt;&lt;span&gt; ubuntu:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;20.04 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;AS &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;release-base
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;apt-get update                             \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; DEBIAN_FRONTEND=noninteractive          \
+&lt;&#x2F;span&gt;&lt;span&gt;    apt-get install --no-install-recommends -y \
+&lt;&#x2F;span&gt;&lt;span&gt;    libblas3                                   \
+&lt;&#x2F;span&gt;&lt;span&gt;    libceres1                                  \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get clean autoclean                 \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get autoremove --yes                \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; rm -rf &#x2F;var&#x2F;lib{apt,dpkg,cache,log}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# The compile step.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;FROM&lt;&#x2F;span&gt;&lt;span&gt; dev-base &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;AS &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;compiled
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;COPY&lt;&#x2F;span&gt;&lt;span&gt; . &#x2F;code
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;WORKDIR &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;code&#x2F;build
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;cmake .. &amp;amp;&amp;amp; make -j$(nproc --all)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# The release step.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;FROM&lt;&#x2F;span&gt;&lt;span&gt; release-base &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;AS &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;release
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;COPY&lt;&#x2F;span&gt;&lt;span&gt; --from=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;compiled&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;code&#x2F;build&#x2F;example &#x2F;usr&#x2F;local&#x2F;bin&#x2F;example
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;CMD &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;example
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We should be able to use docker to build it at this point:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;docker build -t example .
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And when that completes we should be able to run it:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;docker run -it example
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;the-dev-container&quot;&gt;The dev container&lt;&#x2F;h1&gt;
+&lt;p&gt;Now we ideally want to be able to run VS code with the CPP extension setup so we get
+autocomplete.&lt;&#x2F;p&gt;
+&lt;p&gt;To do this we&#x27;ll utilize &lt;a href=&quot;https:&#x2F;&#x2F;code.visualstudio.com&#x2F;docs&#x2F;remote&#x2F;containers&quot;&gt;dev containers&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Create &lt;code&gt;.devcontainer&#x2F;devcontainer.json&lt;&#x2F;code&gt; with the following contents:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;json&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-json &quot;&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; For format details, see https:&#x2F;&#x2F;aka.ms&#x2F;devcontainer.json. For config options, see the README at:
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;vscode-dev-containers&#x2F;tree&#x2F;v0.154.0&#x2F;containers&#x2F;docker-existing-dockerfile
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;name&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;Example dev project&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Sets the run context to one level up instead of the .devcontainer folder.
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;context&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;..&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Update the &amp;#39;dockerFile&amp;#39; property if you aren&amp;#39;t using the standard &amp;#39;Dockerfile&amp;#39; filename.
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;dockerFile&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;..&#x2F;Dockerfile&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Set *default* container specific settings.json values on container create.
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;settings&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;terminal.integrated.shell.linux&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;null
+&lt;&#x2F;span&gt;&lt;span&gt;  },
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Add the IDs of extensions you want installed when the container is created.
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;extensions&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;ms-vscode.cpptools&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;ms-vscode.cmake-tools&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;],
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;build&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;target&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;dev-base&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  },
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;runArgs&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;--cap-add=SYS_PTRACE&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;--security-opt&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;seccomp=unconfined&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now when you launch vs code from this project you should get the option to start things in
+a dev container. Alternatively you can run the &lt;code&gt;Remote-Containers: Reopen in Container&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+&lt;p&gt;You should now have a full CPP dev environment good to go. You should even be able to set breakpoints and run the debugger with the &lt;code&gt;CMake: Debug&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+&lt;p&gt;For a full example I have a repo &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;brian-dawn&#x2F;cpp-dev-container-demo&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>NixPkg Notes</title>
+        <published>2020-11-28T00:00:00+00:00</published>
+        <updated>2020-11-28T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://brian.dawn.lol/posts/nix-pkg-notes/" type="text/html"/>
+        <id>https://brian.dawn.lol/posts/nix-pkg-notes/</id>
+        
+        <content type="html">&lt;h1 id=&quot;what-is-nix&quot;&gt;What is Nix&lt;&#x2F;h1&gt;
+&lt;p&gt;Nix is a package management tool.&lt;&#x2F;p&gt;
+&lt;p&gt;Here are some &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;guides&#x2F;nix-pills&#x2F;&quot;&gt;helpful&lt;&#x2F;a&gt; beginner
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;justinwoo&#x2F;nix-shorts&quot;&gt;resources&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;nix-cli-basics&quot;&gt;Nix CLI Basics&lt;&#x2F;h1&gt;
+&lt;h3 id=&quot;how-do-i-search-for-packages&quot;&gt;How do I search for packages?&lt;&#x2F;h3&gt;
+&lt;p&gt;You can use the new nix command:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix search ripgrep
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-env -qa ripgrep
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;how-do-i-install-a-package&quot;&gt;How do I install a package?&lt;&#x2F;h3&gt;
+&lt;p&gt;Install:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-env -i ripgrep
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Uninstall:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-env -u ripgrep
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;how-do-i-test-out-a-package&quot;&gt;How do I test out a package?&lt;&#x2F;h3&gt;
+&lt;p&gt;The following command will drop you into a shell with &lt;code&gt;ripgrep&lt;&#x2F;code&gt; and &lt;code&gt;vim&lt;&#x2F;code&gt; installed:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-shell -p ripgrep -p vim
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You can also use &lt;code&gt;nix run&lt;&#x2F;code&gt; to do this:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix run nixpkgs.python38 -c python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;how-do-i-upgrade-all-packages-for-which-there-is-a-newer-version&quot;&gt;How do I upgrade all packages for which there is a newer version?&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-env -u
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;i-screwed-up-with-nix-env-what-do-i-do&quot;&gt;I screwed up with nix-env what do I do?&lt;&#x2F;h3&gt;
+&lt;p&gt;Any nix-env operation can be rolled back with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-env --rollback
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;how-do-i-clean-the-store&quot;&gt;How do I clean the store?&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-collect-garbage -d
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;more-complex-examples&quot;&gt;More complex examples&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;using-nixpkg-to-manage-a-python-project&quot;&gt;Using nixpkg to manage a python project&lt;&#x2F;h2&gt;
+&lt;p&gt;Make a file called &lt;code&gt;default.nix&lt;&#x2F;code&gt; in the root of your python project. Inside put:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nix&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-nix &quot;&gt;&lt;code class=&quot;language-nix&quot; data-lang=&quot;nix&quot;&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;import&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;lt;nixpkgs&amp;gt; &lt;&#x2F;span&gt;&lt;span&gt;{};
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;stdenv&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;mkDerivation &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;rec &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;src &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;.&#x2F;.&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;name &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;mypythonproject&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;buildInputs &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;pkgs&lt;&#x2F;span&gt;&lt;span&gt;; [
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# basic python dependencies
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;python38
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;python38Packages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;numpy
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;python38Packages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;scikitlearn
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;python38Packages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;scipy
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;python38Packages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;matplotlib
+&lt;&#x2F;span&gt;&lt;span&gt;  ];
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now you can run:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-shell
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And you&#x27;ll drop into a shell with python and the above dependencies installed.
+You can also run:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-shell --run &amp;quot;python main.py&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you don&#x27;t want an interactive shell.&lt;&#x2F;p&gt;
+&lt;p&gt;You can get more info &lt;a href=&quot;https:&#x2F;&#x2F;josephsdavid.github.io&#x2F;nix.html&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;using-nix-as-a-script-interpreter&quot;&gt;Using nix as a script interpreter&lt;&#x2F;h2&gt;
+&lt;p&gt;You can use nix as a shell interpreter to allow for arbitrary scripts to fetch their own dependencies:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;#! &#x2F;usr&#x2F;bin&#x2F;env nix-shell
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;#! nix-shell -i python -p python pythonPackages.prettytable
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;prettytable
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# Print a simple table.
+&lt;&#x2F;span&gt;&lt;span&gt;t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;prettytable.PrettyTable([&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;N&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;N^2&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;])
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;n &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b57614;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;)&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;t.add_row([n, n &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;n])
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;print &lt;&#x2F;span&gt;&lt;span&gt;t
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;More info &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;manual&#x2F;nix&#x2F;unstable&#x2F;command-ref&#x2F;nix-shell.html&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;running-a-python-repl-with-some-dependencies&quot;&gt;Running a python repl with some dependencies&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix-shell \
+&lt;&#x2F;span&gt;&lt;span&gt;    -p &amp;#39;python38.withPackages(ps: with ps; [pyrealsense2WithoutCuda ])&amp;#39; \
+&lt;&#x2F;span&gt;&lt;span&gt;    --run python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;nix-flakes&quot;&gt;Nix Flakes&lt;&#x2F;h2&gt;
+&lt;p&gt;One of the issues so far with using Nix to manage a projects resources is that in things can still
+change between users depending on the Nix channel they are using. There is an experimental feature
+called Nix Flakes that a addresses these issues.&lt;&#x2F;p&gt;
+&lt;p&gt;For a much more in depth blogpost check out &lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-05-25-flakes&#x2F;&quot;&gt;this&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;a-quick-nix-flakes-demo&quot;&gt;A quick Nix Flakes demo&lt;&#x2F;h3&gt;
+&lt;p&gt;NOTE: this section is very much a WIP.&lt;&#x2F;p&gt;
+&lt;p&gt;Create a new folder and inside it run:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix flake init
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This will create a file called &lt;code&gt;flake.nix&lt;&#x2F;code&gt;. Lets update that file to look like:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nix&quot; style=&quot;background-color:#fcf0ca;color:#282828aa;&quot; class=&quot;language-nix &quot;&gt;&lt;code class=&quot;language-nix&quot; data-lang=&quot;nix&quot;&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;description &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;Demo Python Example&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;inputs &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;nixpkgs&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;url &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;github:NixOS&#x2F;nixpkgs?ref=nixpkgs-unstable&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;utils&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;url &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;github:numtide&#x2F;flake-utils&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;outputs &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;nixpkgs&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;utils &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8f3f71;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span&gt;: (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;utils&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;lib&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;eachSystem &lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#79740e;&quot;&gt;&amp;quot;x86_64-linux&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;] (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;system&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;rec &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;packages &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;pythonEnv &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;nixpkgs&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;legacyPackages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#282828aa;&quot;&gt;${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;system&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#282828aa;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;withPackages&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;ps&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9d0006;&quot;&gt;with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;ps&lt;&#x2F;span&gt;&lt;span&gt;; [ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;numpy pandas &lt;&#x2F;span&gt;&lt;span&gt;]);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;defaultPackage &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;packages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;pythonEnv&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#407959;&quot;&gt;devShell &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;packages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;pythonEnv&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b23c15;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#282828;&quot;&gt;env&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }));
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now lets drop into a shell with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;nix develop
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Nix should download the dependencies. You should eventually drop into a bash shell. From here you could open up your favorite IDE but for now lets check the current python path:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;bash-4.4$ which python
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;nix&#x2F;store&#x2F;p8s64wi8xbzspmfwpxach9dqvycz6ag2-python3-3.8.6-env&#x2F;bin&#x2F;python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Neat. You also should notice that there&#x27;s now a flake.lock file. This is pinning the exact versions of things.&lt;&#x2F;p&gt;
+&lt;p&gt;If you want to see a more comprehensive example involving poetry for easier python dependency management take a look &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;brian-dawn&#x2F;nix-flake-poetry-example&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>How I manage my dotfiles</title>
+        <published>2020-06-12T00:00:00+00:00</published>
+        <updated>2020-06-12T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://brian.dawn.lol/posts/managing-my-dotfiles/" type="text/html"/>
+        <id>https://brian.dawn.lol/posts/managing-my-dotfiles/</id>
+        
+        <content type="html">&lt;p&gt;Over the years I&#x27;ve used several different methods of tracking my dotfiles. I&#x27;ve been using a specific method
+of leveraging git that I have been using for many years now without change. Running &lt;code&gt;git init&lt;&#x2F;code&gt; inside your
+home directory is not ideal because it means that your tools will always think you are inside a git repo
+anywhere that you are. All credit for this method goes to user StreakyCobra on the
+&lt;a href=&quot;https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=11070797&quot;&gt;dreaded orange site&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;With that said here&#x27;s what I did to start using this way of doing things:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;git init --bare $HOME&#x2F;.dotfiles-repo
+&lt;&#x2F;span&gt;&lt;span&gt;alias config=&amp;#39;&#x2F;usr&#x2F;bin&#x2F;git --git-dir=$HOME&#x2F;.dotfiles-repo&#x2F; --work-tree=$HOME&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;config config status.showUntrackedFiles no
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Then add:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;alias config=&amp;#39;&#x2F;usr&#x2F;bin&#x2F;git --git-dir=$HOME&#x2F;.dotfiles-repo&#x2F; --work-tree=$HOME&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;To your bashrc to ensure you always get this alias. So we created a repo that&#x27;s not at our home directory level, and then create a new alias command
+that uses that hidden repo as the working tree. What does this let us do?&lt;&#x2F;p&gt;
+&lt;p&gt;We can track new files with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;config status
+&lt;&#x2F;span&gt;&lt;span&gt;config add .vimrc
+&lt;&#x2F;span&gt;&lt;span&gt;config commit -m &amp;quot;Add vimrc&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;config add .config&#x2F;redshift.conf
+&lt;&#x2F;span&gt;&lt;span&gt;config commit -m &amp;quot;Add redshift config&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;config push
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I use branches to track differences between my Linux and MacOS machines just like you would with regular git.&lt;&#x2F;p&gt;
+&lt;p&gt;On new machines you can do:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;git clone --bare [your-dotfiles-repo] $HOME&#x2F;.dotfiles-repo
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We need to create the same alias as before:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;alias config=&amp;#39;&#x2F;usr&#x2F;bin&#x2F;git --git-dir=$HOME&#x2F;.dotfiles-repo&#x2F; --work-tree=$HOME&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now we are ready to initialize all our files from the repo. You can do this with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;config checkout
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You will probably have file conflicts since git will refuse to overwrite files that already exist. You can either delete&#x2F;backup these files by hand, or if you are like me and need an adrenaline rush you can just force overwrite them:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;config checkout -f
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Finally we need to make it so we don&#x27;t see every other file in our home directory
+that isn&#x27;t tracked:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;config config status.showUntrackedFiles no
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now your system is ready to go!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Some of my favorite things</title>
+        <published>2020-04-15T00:00:00+00:00</published>
+        <updated>2020-04-15T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://brian.dawn.lol/posts/favorite-things/" type="text/html"/>
+        <id>https://brian.dawn.lol/posts/favorite-things/</id>
+        
+        <content type="html">&lt;p&gt;This is a list of some of my favorite tools that are maybe lesser known. This file
+exists mostly so I can keep track of all the things I need to remember I have in my
+toolbelt.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;singlefile&quot;&gt;SingleFile&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;addons.mozilla.org&#x2F;en-US&#x2F;firefox&#x2F;addon&#x2F;single-file&#x2F;&quot;&gt;firefox&lt;&#x2F;a&gt;
+&lt;a href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;singlefile&#x2F;mpiodijhokgodhhofbcjdecpffjipkle?hl=en&quot;&gt;chrome&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A browser extension that saves a webpage into a single standalone HTML file. This includes resources such as images (as far as
+I know it will base64 encode them into the html). I use this extension quite a bit. One of my least favorite things is when a webpage
+I have bookmarked goes away from the internet, so I use this tool to save webpages I want to reference later. E.g. recipes, docs, etc.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;croc&quot;&gt;croc&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;schollz&#x2F;croc&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Send files&#x2F;folders to someone else directly and easily.&lt;&#x2F;p&gt;
+&lt;p&gt;Install with any of these:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;curl https:&#x2F;&#x2F;getcroc.schollz.com | bash
+&lt;&#x2F;span&gt;&lt;span&gt;sudo pacman -S croc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;nvtop&quot;&gt;nvtop&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Syllo&#x2F;nvtop&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Like htop but for GPUs.&lt;&#x2F;p&gt;
+&lt;p&gt;Install with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo pacman -S nvtop
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;starship&quot;&gt;starship&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;starship&#x2F;starship&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A fancy and fast shell prompt.&lt;&#x2F;p&gt;
+&lt;p&gt;Install via:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;curl -fsSL https:&#x2F;&#x2F;starship.rs&#x2F;install.sh | bash
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;sshb0t&quot;&gt;sshb0t&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;genuinetools&#x2F;sshb0t&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Use this to keep authorized keys on servers for easier
+ssh access. Run with docker:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;docker run -d --restart always \
+&lt;&#x2F;span&gt;&lt;span&gt;    --name sshb0t \
+&lt;&#x2F;span&gt;&lt;span&gt;    -v ${HOME}&#x2F;.ssh&#x2F;authorized_keys:&#x2F;root&#x2F;.ssh&#x2F;authorized_keys \
+&lt;&#x2F;span&gt;&lt;span&gt;    r.j3ss.co&#x2F;sshb0t --user [YOUR GITHUB USERNAME HERE] \
+&lt;&#x2F;span&gt;&lt;span&gt;    --keyfile &#x2F;root&#x2F;.ssh&#x2F;authorized_keys
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;fd&quot;&gt;fd&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;sharkdp&#x2F;fd&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A convenient and fast alternative to &lt;code&gt;find&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Installation options:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;cargo install fd-find
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;fzf&quot;&gt;fzf&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;junegunn&#x2F;fzf&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A fuzzy file finder that can integrate with your shell to give you fuzzy searching with ctrl-t and ctrl-r.&lt;&#x2F;p&gt;
+&lt;p&gt;Installation options:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;brew install fzf &amp;amp;&amp;amp; $(brew --prefix)&#x2F;opt&#x2F;fzf&#x2F;install
+&lt;&#x2F;span&gt;&lt;span&gt;git clone --depth 1 https:&#x2F;&#x2F;github.com&#x2F;junegunn&#x2F;fzf.git ~&#x2F;.fzf &amp;amp;&amp;amp; ~&#x2F;.fzf&#x2F;install
+&lt;&#x2F;span&gt;&lt;span&gt;sudo pacman -S fzf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;rg&quot;&gt;rg&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;BurntSushi&#x2F;ripgrep&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Extremely fast searching of files and directories.&lt;&#x2F;p&gt;
+&lt;p&gt;Installation options:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;brew install ripgrep
+&lt;&#x2F;span&gt;&lt;span&gt;pacman -S ripgrep
+&lt;&#x2F;span&gt;&lt;span&gt;cargo install ripgrep
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;dust&quot;&gt;dust&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bootandy&#x2F;dust&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A better version of &lt;code&gt;du&lt;&#x2F;code&gt;. Run it just with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;dust some-folder
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;To get a nice display of what&#x27;s taking up space inside that folder.&lt;&#x2F;p&gt;
+&lt;p&gt;Installation options:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;cargo install du-dust
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;syncthing&quot;&gt;syncthing&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;syncthing&#x2F;syncthing&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Think of it like a peer to peer dropbox clone. Your files only ever live on
+your devices.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;pandoc&quot;&gt;pandoc&lt;&#x2F;h1&gt;
+&lt;p&gt;Convert to and from a large number of markup formats. I like standalone html pages
+with embedded CSS. You can do this with the following command:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;pandoc --self-contained --table-of-contents --to html5+auto_identifiers
+&lt;&#x2F;span&gt;&lt;span&gt;       --standalone INPUT.md --output OUTPUT.html
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This will even base64 encode included images and embed them into the resulting HTML.
+If you don&#x27;t want a table of contents just leave off the flag. If you want to embed a CSS file add the following to the above
+command:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;--css=YOURCSS.css
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For a good example of some nice CSS check out this &lt;a href=&quot;https:&#x2F;&#x2F;gist.github.com&#x2F;killercup&#x2F;5917178&quot;&gt;gist&lt;&#x2F;a&gt;. Also pandoc can generate HTML presentations from markdown.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;tealdeer&quot;&gt;tealdeer&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dbrgn&#x2F;tealdeer&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Fetch quick examples about particular unix commands.&lt;&#x2F;p&gt;
+&lt;p&gt;Install with:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fcf0ca;color:#282828aa;&quot;&gt;&lt;code&gt;&lt;span&gt;cargo install tealdeer
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>

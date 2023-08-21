@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>brian.dawn.lol</title>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Fira Code"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+
+  <div id="space" class="sky" height="256px"></div>
+  <body>
+    <div class="navbar">
+      <a href="/">home</a>
+      •
+      <a href="/resume">resume</a>
+      •
+      <a href="https://sr.ht/~brian-dawn/">srht</a>
+      •
+      <a href="https://github.com/brian-dawn">github</a>
+      •
+      <a href="/atom.xml">feed</a>
+    </div>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  NixPkg Notes
+</h1>
+
+<p class="subtitle"><strong>2020-11-28</strong></p>
+
+<section>
+  <ul>
+    
+    <li>
+      <a href="#what-is-nix">What is Nix</a>
+      
+    </li>
+    
+    <li>
+      <a href="#nix-cli-basics">Nix CLI Basics</a>
+      
+      <ul>
+        
+        <li>
+          <a href="#how-do-i-search-for-packages">How do I search for packages?</a>
+        </li>
+        
+        <li>
+          <a href="#how-do-i-install-a-package">How do I install a package?</a>
+        </li>
+        
+        <li>
+          <a href="#how-do-i-test-out-a-package">How do I test out a package?</a>
+        </li>
+        
+        <li>
+          <a href="#how-do-i-upgrade-all-packages-for-which-there-is-a-newer-version">How do I upgrade all packages for which there is a newer version?</a>
+        </li>
+        
+        <li>
+          <a href="#i-screwed-up-with-nix-env-what-do-i-do">I screwed up with nix-env what do I do?</a>
+        </li>
+        
+        <li>
+          <a href="#how-do-i-clean-the-store">How do I clean the store?</a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="#more-complex-examples">More complex examples</a>
+      
+      <ul>
+        
+        <li>
+          <a href="#using-nixpkg-to-manage-a-python-project">Using nixpkg to manage a python project</a>
+        </li>
+        
+        <li>
+          <a href="#using-nix-as-a-script-interpreter">Using nix as a script interpreter</a>
+        </li>
+        
+        <li>
+          <a href="#running-a-python-repl-with-some-dependencies">Running a python repl with some dependencies</a>
+        </li>
+        
+        <li>
+          <a href="#nix-flakes">Nix Flakes</a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+  </ul>
+</section>
+
+<h1 id="what-is-nix">What is Nix</h1>
+<p>Nix is a package management tool.</p>
+<p>Here are some <a href="https://nixos.org/guides/nix-pills/">helpful</a> beginner
+<a href="https://github.com/justinwoo/nix-shorts">resources</a>.</p>
+<h1 id="nix-cli-basics">Nix CLI Basics</h1>
+<h3 id="how-do-i-search-for-packages">How do I search for packages?</h3>
+<p>You can use the new nix command:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix search ripgrep
+</span></code></pre>
+<p>Or:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-env -qa ripgrep
+</span></code></pre>
+<h3 id="how-do-i-install-a-package">How do I install a package?</h3>
+<p>Install:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-env -i ripgrep
+</span></code></pre>
+<p>Uninstall:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-env -u ripgrep
+</span></code></pre>
+<h3 id="how-do-i-test-out-a-package">How do I test out a package?</h3>
+<p>The following command will drop you into a shell with <code>ripgrep</code> and <code>vim</code> installed:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-shell -p ripgrep -p vim
+</span></code></pre>
+<p>You can also use <code>nix run</code> to do this:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix run nixpkgs.python38 -c python
+</span></code></pre>
+<h3 id="how-do-i-upgrade-all-packages-for-which-there-is-a-newer-version">How do I upgrade all packages for which there is a newer version?</h3>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-env -u
+</span></code></pre>
+<h3 id="i-screwed-up-with-nix-env-what-do-i-do">I screwed up with nix-env what do I do?</h3>
+<p>Any nix-env operation can be rolled back with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-env --rollback
+</span></code></pre>
+<h3 id="how-do-i-clean-the-store">How do I clean the store?</h3>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-collect-garbage -d
+</span></code></pre>
+<h1 id="more-complex-examples">More complex examples</h1>
+<h2 id="using-nixpkg-to-manage-a-python-project">Using nixpkg to manage a python project</h2>
+<p>Make a file called <code>default.nix</code> in the root of your python project. Inside put:</p>
+<pre data-lang="nix" style="background-color:#fcf0ca;color:#282828aa;" class="language-nix "><code class="language-nix" data-lang="nix"><span style="color:#9d0006;">with </span><span style="color:#b57614;">import</span><span style="color:#79740e;">&lt;nixpkgs&gt; </span><span>{};
+</span><span style="color:#282828;">stdenv</span><span style="color:#b23c15;">.</span><span style="color:#282828;">mkDerivation </span><span style="color:#9d0006;">rec </span><span>{
+</span><span>  </span><span style="color:#407959;">src </span><span style="color:#b23c15;">= </span><span style="color:#79740e;">./.</span><span>;
+</span><span>  </span><span style="color:#407959;">name </span><span style="color:#b23c15;">= </span><span style="color:#79740e;">&quot;mypythonproject&quot;</span><span>;
+</span><span>
+</span><span>  </span><span style="color:#407959;">buildInputs </span><span style="color:#b23c15;">= </span><span style="color:#9d0006;">with </span><span style="color:#282828;">pkgs</span><span>; [
+</span><span>    </span><span style="font-style:italic;color:#928374;"># basic python dependencies
+</span><span>      </span><span style="color:#282828;">python38
+</span><span>      </span><span style="color:#282828;">python38Packages</span><span style="color:#b23c15;">.</span><span style="color:#282828;">numpy
+</span><span>      </span><span style="color:#282828;">python38Packages</span><span style="color:#b23c15;">.</span><span style="color:#282828;">scikitlearn
+</span><span>      </span><span style="color:#282828;">python38Packages</span><span style="color:#b23c15;">.</span><span style="color:#282828;">scipy
+</span><span>      </span><span style="color:#282828;">python38Packages</span><span style="color:#b23c15;">.</span><span style="color:#282828;">matplotlib
+</span><span>  ];
+</span><span>}
+</span></code></pre>
+<p>Now you can run:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-shell
+</span></code></pre>
+<p>And you'll drop into a shell with python and the above dependencies installed.
+You can also run:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-shell --run &quot;python main.py&quot;
+</span></code></pre>
+<p>If you don't want an interactive shell.</p>
+<p>You can get more info <a href="https://josephsdavid.github.io/nix.html">here</a>.</p>
+<h2 id="using-nix-as-a-script-interpreter">Using nix as a script interpreter</h2>
+<p>You can use nix as a shell interpreter to allow for arbitrary scripts to fetch their own dependencies:</p>
+<pre data-lang="python" style="background-color:#fcf0ca;color:#282828aa;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#928374;">#! /usr/bin/env nix-shell
+</span><span style="font-style:italic;color:#928374;">#! nix-shell -i python -p python pythonPackages.prettytable
+</span><span>
+</span><span style="color:#9d0006;">import </span><span>prettytable
+</span><span>
+</span><span style="font-style:italic;color:#928374;"># Print a simple table.
+</span><span>t </span><span style="color:#b23c15;">= </span><span style="color:#282828;">prettytable.PrettyTable([</span><span style="color:#79740e;">&quot;N&quot;</span><span style="color:#282828;">, </span><span style="color:#79740e;">&quot;N^2&quot;</span><span style="color:#282828;">])
+</span><span style="color:#9d0006;">for </span><span>n </span><span style="color:#9d0006;">in </span><span style="color:#b57614;">range</span><span style="color:#282828;">(</span><span style="color:#8f3f71;">1</span><span style="color:#282828;">, </span><span style="color:#8f3f71;">10</span><span style="color:#282828;">)</span><span>: </span><span style="color:#282828;">t.add_row([n, n </span><span style="color:#b23c15;">* </span><span style="color:#282828;">n])
+</span><span style="color:#9d0006;">print </span><span>t
+</span></code></pre>
+<p>More info <a href="https://nixos.org/manual/nix/unstable/command-ref/nix-shell.html">here</a>.</p>
+<h2 id="running-a-python-repl-with-some-dependencies">Running a python repl with some dependencies</h2>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix-shell \
+</span><span>    -p &#39;python38.withPackages(ps: with ps; [pyrealsense2WithoutCuda ])&#39; \
+</span><span>    --run python
+</span></code></pre>
+<h2 id="nix-flakes">Nix Flakes</h2>
+<p>One of the issues so far with using Nix to manage a projects resources is that in things can still
+change between users depending on the Nix channel they are using. There is an experimental feature
+called Nix Flakes that a addresses these issues.</p>
+<p>For a much more in depth blogpost check out <a href="https://www.tweag.io/blog/2020-05-25-flakes/">this</a>.</p>
+<h3 id="a-quick-nix-flakes-demo">A quick Nix Flakes demo</h3>
+<p>NOTE: this section is very much a WIP.</p>
+<p>Create a new folder and inside it run:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix flake init
+</span></code></pre>
+<p>This will create a file called <code>flake.nix</code>. Lets update that file to look like:</p>
+<pre data-lang="nix" style="background-color:#fcf0ca;color:#282828aa;" class="language-nix "><code class="language-nix" data-lang="nix"><span>{
+</span><span>  </span><span style="color:#407959;">description </span><span style="color:#b23c15;">= </span><span style="color:#79740e;">&quot;Demo Python Example&quot;</span><span>;
+</span><span>
+</span><span>  </span><span style="color:#407959;">inputs </span><span style="color:#b23c15;">= </span><span>{
+</span><span>    </span><span style="color:#407959;">nixpkgs</span><span>.</span><span style="color:#407959;">url </span><span style="color:#b23c15;">= </span><span style="color:#79740e;">&quot;github:NixOS/nixpkgs?ref=nixpkgs-unstable&quot;</span><span>;
+</span><span>    </span><span style="color:#407959;">utils</span><span>.</span><span style="color:#407959;">url </span><span style="color:#b23c15;">= </span><span style="color:#79740e;">&quot;github:numtide/flake-utils&quot;</span><span>;
+</span><span>  };
+</span><span>
+</span><span>  </span><span style="color:#407959;">outputs </span><span style="color:#b23c15;">= </span><span style="color:#8f3f71;">{ </span><span style="color:#282828;">self</span><span style="color:#b23c15;">, </span><span style="color:#282828;">nixpkgs</span><span style="color:#b23c15;">, </span><span style="color:#282828;">utils </span><span style="color:#8f3f71;">}</span><span>: (</span><span style="color:#282828;">utils</span><span style="color:#b23c15;">.</span><span style="color:#282828;">lib</span><span style="color:#b23c15;">.</span><span style="color:#282828;">eachSystem </span><span>[</span><span style="color:#79740e;">&quot;x86_64-linux&quot; </span><span>] (</span><span style="color:#282828;">system</span><span>: </span><span style="color:#9d0006;">rec </span><span>{
+</span><span>
+</span><span>    </span><span style="color:#407959;">packages </span><span style="color:#b23c15;">= </span><span>{
+</span><span>      </span><span style="color:#407959;">pythonEnv </span><span style="color:#b23c15;">= </span><span style="color:#282828;">nixpkgs</span><span style="color:#b23c15;">.</span><span style="color:#282828;">legacyPackages</span><span style="color:#b23c15;">.</span><span style="font-style:italic;color:#282828aa;">${</span><span style="color:#282828;">system</span><span style="font-style:italic;color:#282828aa;">}</span><span style="color:#b23c15;">.</span><span style="color:#282828;">python3</span><span style="color:#b23c15;">.</span><span style="color:#282828;">withPackages</span><span>(</span><span style="color:#282828;">ps</span><span>: </span><span style="color:#9d0006;">with </span><span style="color:#282828;">ps</span><span>; [ </span><span style="color:#282828;">numpy pandas </span><span>]);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#407959;">defaultPackage </span><span style="color:#b23c15;">= </span><span style="color:#282828;">packages</span><span style="color:#b23c15;">.</span><span style="color:#282828;">pythonEnv</span><span>;
+</span><span>    </span><span style="color:#407959;">devShell </span><span style="color:#b23c15;">= </span><span style="color:#282828;">packages</span><span style="color:#b23c15;">.</span><span style="color:#282828;">pythonEnv</span><span style="color:#b23c15;">.</span><span style="color:#282828;">env</span><span>;
+</span><span>  }));
+</span><span>}
+</span></code></pre>
+<p>Now lets drop into a shell with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>nix develop
+</span></code></pre>
+<p>Nix should download the dependencies. You should eventually drop into a bash shell. From here you could open up your favorite IDE but for now lets check the current python path:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>bash-4.4$ which python
+</span><span>/nix/store/p8s64wi8xbzspmfwpxach9dqvycz6ag2-python3-3.8.6-env/bin/python
+</span></code></pre>
+<p>Neat. You also should notice that there's now a flake.lock file. This is pinning the exact versions of things.</p>
+<p>If you want to see a more comprehensive example involving poetry for easier python dependency management take a look <a href="https://github.com/brian-dawn/nix-flake-poetry-example">here</a>.</p>
+
+
+</div>
+    </section>
+  </body>
+</html>

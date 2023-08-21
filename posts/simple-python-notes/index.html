@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>brian.dawn.lol</title>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Fira Code"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+
+  <div id="space" class="sky" height="256px"></div>
+  <body>
+    <div class="navbar">
+      <a href="/">home</a>
+      •
+      <a href="/resume">resume</a>
+      •
+      <a href="https://sr.ht/~brian-dawn/">srht</a>
+      •
+      <a href="https://github.com/brian-dawn">github</a>
+      •
+      <a href="/atom.xml">feed</a>
+    </div>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  Python Notes
+</h1>
+
+<p class="subtitle"><strong>2023-06-27</strong></p>
+
+<section>
+  <ul>
+    
+    <li>
+      <a href="#guide">Guide</a>
+      
+    </li>
+    
+    <li>
+      <a href="#project-management">Project Management</a>
+      
+      <ul>
+        
+        <li>
+          <a href="#install-pyenv">Install pyenv</a>
+        </li>
+        
+        <li>
+          <a href="#getting-started">Getting Started</a>
+        </li>
+        
+        <li>
+          <a href="#creating-a-virtualenv-with-venv">Creating a virtualenv with venv</a>
+        </li>
+        
+        <li>
+          <a href="#using-pip-inside-the-virtual-environment">Using pip inside the virtual environment</a>
+        </li>
+        
+        <li>
+          <a href="#using-vs-code">Using VS Code</a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="#common-tools-and-libraries">Common tools and libraries</a>
+      
+      <ul>
+        
+        <li>
+          <a href="#code-formatting">Code formatting</a>
+        </li>
+        
+        <li>
+          <a href="#linting">Linting</a>
+        </li>
+        
+        <li>
+          <a href="#tests">Tests</a>
+        </li>
+        
+        <li>
+          <a href="#typechecking">Typechecking</a>
+        </li>
+        
+        <li>
+          <a href="#debugging">Debugging</a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+  </ul>
+</section>
+
+<h1 id="guide">Guide</h1>
+<p>As good as tools like poetry are here is my ultra minimal python guide.</p>
+<p>To make a long story short the only non-standard tool we'll depend on is pyenv to manage our versions of python.</p>
+<h1 id="project-management">Project Management</h1>
+<h2 id="install-pyenv">Install pyenv</h2>
+<p>On macos:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>brew install pyenv
+</span></code></pre>
+<p>Others:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>curl https://pyenv.run | bash
+</span></code></pre>
+<p>Update your <code>.bashrc</code> file to load pyenv:</p>
+<pre data-lang="bash" style="background-color:#fcf0ca;color:#282828aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#9d0006;">export </span><span style="color:#282828;">PYENV_ROOT</span><span style="color:#b23c15;">=</span><span style="color:#79740e;">&quot;$</span><span style="color:#282828;">HOME</span><span style="color:#79740e;">/.pyenv&quot;
+</span><span style="color:#b57614;">command </span><span style="color:#282828;">-v pyenv </span><span style="color:#b23c15;">&gt;</span><span style="color:#282828;">/dev/null </span><span style="color:#b23c15;">|| </span><span style="color:#9d0006;">export </span><span style="color:#282828;">PATH</span><span style="color:#b23c15;">=</span><span style="color:#79740e;">&quot;$</span><span style="color:#282828;">PYENV_ROOT</span><span style="color:#79740e;">/bin:$</span><span style="color:#282828;">PATH</span><span style="color:#79740e;">&quot;
+</span><span style="color:#b57614;">eval </span><span style="color:#79740e;">&quot;$(</span><span style="color:#282828;">pyenv init -</span><span style="color:#79740e;">)&quot;
+</span></code></pre>
+<p>Source your <code>.bashrc</code> to load the changes:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>source ~/.bashrc
+</span></code></pre>
+<h2 id="getting-started">Getting Started</h2>
+<p>Lets create a new folder for our test project:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>mkdir test-project
+</span><span>cd test-project
+</span></code></pre>
+<p>Lets use python 3.9. We can use pyenv to install it:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pyenv install 3.9.16
+</span></code></pre>
+<p>We can create a <code>.python-version</code> file in the project which will auto
+load and set us on 3.9 when we cd into this directory with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pyenv local 3.9.16
+</span><span>cat .python-version
+</span></code></pre>
+<p>We can verify that we are using the correct python version:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>python --version
+</span></code></pre>
+<h2 id="creating-a-virtualenv-with-venv">Creating a virtualenv with venv</h2>
+<p>Before we can write code and install packages we need to create what's called a virtualenv. In the Python world
+you can sorta think of this like a sandbox where anything you do in it is contained just in the virtual environment.</p>
+<p>This will let us maintain separate versions of various packages if we need to.</p>
+<p>Create the virtualenv:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>python -m venv .venv
+</span></code></pre>
+<p>This creates a folder called <code>.venv</code> which contains our virtual environment. We can activate it with the following:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>source .venv/bin/activate
+</span></code></pre>
+<p>Now all our python tools should be scoped to the virtualenv. Running:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>which python
+</span></code></pre>
+<p>Should show that our python is being sourced by the .venv folder. If you ever want to break free from the virtual environment
+you can run:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>deactivate
+</span></code></pre>
+<h2 id="using-pip-inside-the-virtual-environment">Using pip inside the virtual environment</h2>
+<p>Pip is used to install packages. It's important to note that if you have not activated the virtual environment you will be using your
+global pip/python environment.</p>
+<p>It is common to create a file called <code>requirements.txt</code> which contains our list of dependencies.</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>touch requirements.txt
+</span></code></pre>
+<p>Lets install numpy, so add the following to <code>requirements.txt</code>:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>numpy==1.24.4
+</span></code></pre>
+<p>If you don't care about the version you could just say <code>numpy</code> but I recommend freezing the deps then which I describe later in this document. Now we can install things to the virtual environment with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip install -r requirements.txt
+</span></code></pre>
+<p>We can validate that this worked by dropping into a python shell:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>python
+</span></code></pre>
+<p>Now lets import numpy:</p>
+<pre data-lang="python" style="background-color:#fcf0ca;color:#282828aa;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#9d0006;">import </span><span>numpy </span><span style="color:#9d0006;">as </span><span>np
+</span><span style="color:#282828;">exit()
+</span></code></pre>
+<p>Another way we can do this is by installing directly with pip, lets install a code formatter called <code>black</code>:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip install black
+</span></code></pre>
+<p>The issue here though is if we want to pull the project down again we need to remember we installed this. We can leverage
+a command called <code>pip freeze</code> to export our environment back to the <code>requirements.txt</code> file.</p>
+<p>Go ahead and run:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip freeze
+</span></code></pre>
+<p>You'll see it also dumps out the transitive dependencies we would like to install as well. To avoid polluting our main <code>requirements.txt</code> file
+I like to store the frozen deps in a different file, but that's up to you:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip freeze &gt; requirements-frozen.txt
+</span></code></pre>
+<h2 id="using-vs-code">Using VS Code</h2>
+<p>If you use VS code things should just work out of the box. You need to open the project while the virtual environment is activated:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>code .
+</span></code></pre>
+<p>The correct python version as well as the virtual environment should be shown at the bottom right. If you create a new python file called <code>main.py</code>
+you should be able to insert the following program:</p>
+<pre data-lang="python" style="background-color:#fcf0ca;color:#282828aa;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#9d0006;">import </span><span>numpy </span><span style="color:#9d0006;">as </span><span>np
+</span><span>a </span><span style="color:#b23c15;">= </span><span style="color:#282828;">np.arange(</span><span style="color:#8f3f71;">15</span><span style="color:#282828;">).reshape(</span><span style="color:#8f3f71;">3</span><span style="color:#282828;">, </span><span style="color:#8f3f71;">5</span><span style="color:#282828;">)
+</span><span style="color:#b57614;">print</span><span style="color:#282828;">(a)
+</span></code></pre>
+<p>You should have auto complete setup automatically at this point.</p>
+<h1 id="common-tools-and-libraries">Common tools and libraries</h1>
+<h2 id="code-formatting">Code formatting</h2>
+<p>I recommend using <code>black</code>. You can install/use it with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip install black
+</span><span>black .
+</span></code></pre>
+<p>Don't forget to freeze it in your requirements file!</p>
+<h2 id="linting">Linting</h2>
+<p>I like <code>ruff</code>. You can install/use it with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip install ruff
+</span><span>ruff .
+</span></code></pre>
+<p>Don't forget to freeze it in your requirements file!</p>
+<h2 id="tests">Tests</h2>
+<p>I recommend <code>pytest</code>. Install it with:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip install pytest
+</span><span>mkdir test
+</span><span>touch test/my_test.py
+</span></code></pre>
+<p>Inside <code>my_test.py</code> add:</p>
+<pre data-lang="python" style="background-color:#fcf0ca;color:#282828aa;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#9d0006;">def </span><span style="color:#407959;">test_failure</span><span>():
+</span><span>    </span><span style="color:#9d0006;">assert </span><span style="color:#8f3f71;">False
+</span></code></pre>
+<p>Now you can run:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pytest
+</span></code></pre>
+<p>And you should see failures.</p>
+<h2 id="typechecking">Typechecking</h2>
+<p>Lets use <code>mypy</code> to test do typechecking. VS Code ships with its own which works well but here's how we can
+check things via the CLI:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>pip install mypy
+</span></code></pre>
+<p>Lets add this function to our <code>main.py</code> file:</p>
+<pre data-lang="python" style="background-color:#fcf0ca;color:#282828aa;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#9d0006;">def </span><span style="color:#407959;">type_checker_fail</span><span>() -&gt; </span><span style="color:#b57614;">int</span><span>:
+</span><span>    </span><span style="color:#9d0006;">return </span><span style="color:#79740e;">&quot;Hello World&quot;
+</span></code></pre>
+<p>Now run:</p>
+<pre style="background-color:#fcf0ca;color:#282828aa;"><code><span>mypy .
+</span></code></pre>
+<p>And you should see the type error.</p>
+<h2 id="debugging">Debugging</h2>
+<p>Python ships with a library called pdb, you can use it in your code like:</p>
+<pre data-lang="python" style="background-color:#fcf0ca;color:#282828aa;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#9d0006;">import </span><span>pdb; </span><span style="color:#282828;">pdb.set_trace()
+</span></code></pre>
+<p>Now just run your code and you'll drop into the debugger when you hit the trace point.</p>
+
+
+</div>
+    </section>
+  </body>
+</html>
