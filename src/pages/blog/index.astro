@@ -32,7 +32,7 @@ const posts = (await getCollection("blog")).sort(
                 )}
               </div>
               <a href={`/blog/${post.slug}/`}>
-                <h4 class="title">{post.data.title}</h4>
+                <h4 class="title text-blue-500">{post.data.title}</h4>
                 <FormattedDate date={post.data.pubDate} />
               </a>
             </div>
