@@ -1,11 +1,17 @@
-+++
-title = "Some of my favorite things"
-date = 2020-04-15
-+++
+---
+title: "Favorite Things"
+description: ""
+pubDate: "Apr 04 2020"
+banner: "/planet02.png"
+---
 
 This is a list of some of my favorite tools that are maybe lesser known. This file
 exists mostly so I can keep track of all the things I need to remember I have in my
 toolbelt.
+
+# Rembg
+
+    TODO: Add this.
 
 # SingleFile
 

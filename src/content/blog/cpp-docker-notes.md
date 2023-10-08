@@ -1,7 +1,9 @@
-+++
-title = "C++ Development with Docker"
-date = 2020-12-27
-+++
+---
+title: "Docker C++ Notes"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Dec 17 2020"
+banner: "/planet05.png"
+---
 
 This document assumes you know docker, cmake, and use VS code for development.
 

@@ -1,0 +1,146 @@
+---
+import * as THREE from "three";
+---
+
+<div id="three-container" style="width: 100px; height: 100px;"></div>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"
+  integrity="sha512-nogdM20cZX4FjsqU5H5ecK3vw8LjYN1AcUUWi7asLUVP3eJK5wldywvqFMW8CLd5/xoiJaIL3eXG82SlOWZkTA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+
+<script>
+  const threeContainer = document.getElementById("three-container");
+
+  const uniforms = {
+    time: { value: 1.0 },
+    u_mouse: { value: new THREE.Vector2() },
+  };
+
+  const fragmentShader = `
+  varying vec3 vNormal;
+  varying vec3 vViewPosition;
+
+
+float basicFresnel(vec3 normal, vec3 viewDirection) {
+    return 1.0 - abs(dot(normal, viewDirection));
+}
+
+
+
+
+void main() {
+  vec3 normalizedNormal = normalize(vNormal);
+
+  // Light properties
+  vec3 lightDirection = normalize(vec3(1.0, 2.5, 5.0));
+  vec3 viewDirection = vec3(0.0, 0.0, 1.0); // Fixed direction
+
+
+  // Diffuse shading
+  float diff = max(dot(normalizedNormal, lightDirection), 0.0);
+
+  // Specular shading
+  vec3 halfwayDir = normalize(lightDirection + viewDirection);  
+  float spec = pow(max(dot(normalizedNormal, halfwayDir), 0.0), 224.0);
+    
+  // Fresnel rim lighting
+  float fresnelTerm = basicFresnel(normalizedNormal, viewDirection);
+  vec3 rimColor = vec3(1.0, 0.9, 0.1) * fresnelTerm;
+
+  // Colors
+  vec3 ambientColor = vec3(0.18, 0.05, 0.19);
+  vec3 diffuseColor = ambientColor;
+  vec3 specularColor = vec3(1.0, 0.5, 0.1) * spec;
+
+  // Remove specular colors for now.
+  vec3 color = ambientColor + diffuseColor + specularColor * 0.0 + rimColor;
+  gl_FragColor = vec4(color, 1.0);
+}
+
+
+
+`;
+
+  const vertexShader = `
+  uniform float time;
+  uniform vec2 u_mouse;
+  varying vec3 vNormal;
+  varying vec3 vViewPosition;
+
+
+  void main() {
+    vNormal = normalize(normal);
+    vec3 transformed = position;
+
+    float amp = 0.21 + u_mouse.x / 10.0; // reduced amplitude
+    float freq = 15.5;
+
+    float xDiv = 3.5 * u_mouse.x + 1.0;
+    float yDiv = 1.5 * u_mouse.y + 1.0;
+
+
+
+
+
+
+    transformed.x = position.x + sin(position.y * freq / xDiv + time * 120.0) * amp;
+    transformed.y = position.y + sin(position.x * freq / yDiv + time * 120.0) * amp;
+
+
+    vViewPosition = -transformed; // View position for Phong reflection
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(transformed, 1.0);
+  }
+`;
+
+  const shaderMaterial = new THREE.ShaderMaterial({
+    uniforms: uniforms,
+    vertexShader: vertexShader,
+    fragmentShader: fragmentShader,
+  });
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // 1 is the aspect ratio for 100x100
+  camera.position.z = 2;
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+  renderer.setSize(100, 100);
+  threeContainer.appendChild(renderer.domElement);
+
+  var sphere_geometry = new THREE.SphereGeometry(1, 128, 128);
+  var material = new THREE.MeshNormalMaterial();
+
+  var sphere = new THREE.Mesh(sphere_geometry, shaderMaterial);
+  scene.add(sphere);
+
+  document.addEventListener("mousemove", function (event) {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const mouseX = event.screenX / screenWidth;
+    const mouseY = event.screenY / screenHeight;
+
+    uniforms.u_mouse.value.set(mouseX, mouseY);
+  });
+
+  var update = function () {
+    var time = performance.now() * 0.00003;
+    uniforms.time.value = time;
+
+    sphere.geometry.computeVertexNormals();
+    sphere.geometry.normalsNeedUpdate = true;
+    sphere.geometry.verticesNeedUpdate = true;
+  };
+
+  // Animation function
+  const animate = () => {
+    requestAnimationFrame(animate);
+
+    update();
+
+    renderer.render(scene, camera);
+  };
+
+  // Start the animation loop
+  animate();
+</script>

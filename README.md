@@ -1,12 +1,9 @@
-# brian.dawn.lol
+# New Blog
 
-This website is made with Zola.
+## Generating planets
 
+Dalle3:
 
-# Development
+        a green python gas giant planet, digital art, in an anime cartoon style, pure black background, no stars
 
-    zola serve
-
-# Deployment
-
-GitHub actions are setup so any commits made to the `trunk` branch will be deployed.
+Then use rembg to get a transparent bg.

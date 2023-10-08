@@ -1,7 +1,9 @@
-+++
-title = "How I manage my dotfiles"
-date = 2020-06-12
-+++
+---
+title: "Dotfile Management"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Jun 12 2020"
+banner: "/planet01.png"
+---
 
 Over the years I've used several different methods of tracking my dotfiles. I've been using a specific method
 of leveraging git that I have been using for many years now without change. Running `git init` inside your

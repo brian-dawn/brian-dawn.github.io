@@ -1,7 +1,9 @@
-+++
-title = "NixPkg Notes"
-date = 2020-11-28
-+++
+---
+title: "NixPkg Notes"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Nov 28 2020"
+banner: "/planet04.png"
+---
 
 # What is Nix
 

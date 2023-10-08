@@ -1,0 +1,18 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import Ball from "./Ball.astro";
+---
+
+<header
+  class="bg-gray-900 backdrop-blur content-box p-6 mb-12 rounded-md drop-shadow-2xl shadow-2xl mx-auto max-w-6xl"
+>
+  <nav class="flex justify-between items-center">
+    <Ball />
+    <div class="flex space-x-4 text-blue-300">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/resume.html">Resume</HeaderLink>
+    </div>
+  </nav>
+</header>

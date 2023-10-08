@@ -1,0 +1,112 @@
+
+body {
+    color: #FFF;
+    font-size: 1.5em;
+    background: linear-gradient(
+        72deg, 
+        #141316 25%, 
+        #4b4852 100%
+    );
+    position: relative;
+    min-height: 100vh;
+}
+
+
+
+.banner-container {
+
+  width: 5em;       /* Define the size of the circular view */
+  height: 5em;
+
+}
+
+
+/*
+Markdown styling...
+*/
+
+
+hr { background-color: rgba(255,155,0,1); height: 1px; border: 0; }
+
+
+h1,h2,h3,h4,h5,h6 {
+    color: rgba(255,155,0,1);
+    margin-top: .5em;
+
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding-left: 1em; 
+  text-indent: -.5em;
+}
+
+li::before {
+  content: "● ";
+  color: rgba(255,155,0,1); /* or whatever color you prefer */
+}
+
+
+p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    line-height: 1.5em;
+}
+
+code {
+
+    color: rgba(255,155,0,1);
+}
+
+pre {
+    
+    padding-left: .8em;
+    padding-top: .4em;
+    padding-bottom: .4em;
+
+    /* margin-top: 1.5em;
+    margin-bottom: 1.5em; */
+
+    /* background-color: #362d34 !important; */
+
+    /*
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px);
+    */
+    border-radius: 0.2em;
+
+    /* margin-left: -1.5em; */
+
+    margin-right: -2.5em;
+
+    /* box-shadow: 0 0 2em .1em rgba(0, 0, 0, 0.3); */
+
+    box-shadow: 0 0 1em .1em rgba(0, 0, 0, 0.35);
+
+    font-size: .75em;
+    
+}

@@ -1,9 +1,9 @@
-+++
-title = "Python Notes"
-date = 2023-06-27
-+++
-
-# Guide
+---
+title: "Quick Python Guide"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Jul 22 2022"
+banner: "/planet03.png"
+---
 
 As good as tools like poetry are here is my ultra minimal python guide.
 
