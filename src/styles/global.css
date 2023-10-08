@@ -23,7 +23,12 @@ body {
 
 /*
 Markdown styling...
+zinc
 */
+
+/* a {
+    color: rgba(255,155,0,1);
+} */
 
 
 hr { background-color: rgba(255,155,0,1); height: 1px; border: 0; }
