@@ -117,8 +117,8 @@ void main() {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    const mouseX = event.screenX / screenWidth;
-    const mouseY = event.screenY / screenHeight;
+    const mouseX = event.clientX / screenWidth;
+    const mouseY = event.clientY / screenHeight;
 
     uniforms.u_mouse.value.set(mouseX, mouseY);
   });
