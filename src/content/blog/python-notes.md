@@ -1,17 +1,22 @@
 ---
 title: "Quick Python Guide"
-description: "Lorem ipsum dolor sit amet"
+description: "My notes on minimal Python"
 pubDate: "Jul 22 2022"
 banner: "/planet03.png"
 ---
 
-As good as tools like poetry are here is my ultra minimal python guide.
-
-To make a long story short the only non-standard tool we'll depend on is pyenv to manage our versions of python.
+Python is quite a bit landscape, it can be intimidating to know
+how to manage projects. Here is my ultra minimal Python setup. It
+only requires the installation of one non-standard tool.
 
 # Project Management
 
 ## Install pyenv
+
+Very often we want to have multiple versions of Python installed on our
+systems. For this I recommend `pyenv`.
+
+If you are fine with the system Python you can skip this step.
 
 On macos:
 
