@@ -5,8 +5,10 @@ pubDate: "Jul 22 2022"
 banner: "/planet03.png"
 ---
 
-Python is quite a bit landscape, it can be intimidating to know
-how to manage projects. Here is my ultra minimal Python setup. It
+Python is quite a big landscape, it can be intimidating to know
+how to manage projects.
+
+Here is my ultra minimal Python setup. It
 only requires the installation of one non-standard tool.
 
 # Project Management
