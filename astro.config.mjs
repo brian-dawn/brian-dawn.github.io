@@ -10,7 +10,7 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       //theme: "monokai",
-      theme: "dracula",
+      theme: "dracula-soft",
     },
   },
   integrations: [mdx(), sitemap(), tailwind()],
