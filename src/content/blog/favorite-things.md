@@ -11,7 +11,15 @@ toolbelt.
 
 # Rembg
 
-    TODO: Add this.
+[github](https://github.com/danielgatis/rembg)
+
+Rembg is a tool to remove the background of any image or photo. 
+
+    pip install rembg
+
+To use `rembg`, simply run:
+
+    rembg i input.png output.png
 
 # SingleFile
 
@@ -67,16 +75,6 @@ docker run -d --restart always \
     r.j3ss.co/sshb0t --user [YOUR GITHUB USERNAME HERE] \
     --keyfile /root/.ssh/authorized_keys
 ```
-
-# fd
-
-[github](https://github.com/sharkdp/fd)
-
-A convenient and fast alternative to `find`.
-
-Installation options:
-
-    cargo install fd-find
 
 # fzf
 
@@ -138,13 +136,3 @@ command:
     --css=YOURCSS.css
 
 For a good example of some nice CSS check out this [gist](https://gist.github.com/killercup/5917178). Also pandoc can generate HTML presentations from markdown.
-
-# tealdeer
-
-[github](https://github.com/dbrgn/tealdeer)
-
-Fetch quick examples about particular unix commands.
-
-Install with:
-
-    cargo install tealdeer
