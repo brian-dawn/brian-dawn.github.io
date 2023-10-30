@@ -5,13 +5,13 @@ pubDate: "Jun 12 2020"
 banner: "/planet01.png"
 ---
 
-Over the years I've used several different methods of tracking my dotfiles. I've been using a specific method
-of leveraging git that I have been using for many years now without change. Running `git init` inside your
-home directory is not ideal because it means that your tools will always think you are inside a git repo
-anywhere that you are. All credit for this method goes to user StreakyCobra on the
+I track my dotfiles with just plain `git`. Here's how I do it without making my system
+think I'm always inside a git repo.
+
+All credit for this method goes to user StreakyCobra on the
 [dreaded orange site](https://news.ycombinator.com/item?id=11070797).
 
-With that said here's what I did to start using this way of doing things:
+Here's what I did to start using this way of doing things:
 
     git init --bare $HOME/.dotfiles-repo
     alias config='/usr/bin/git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME'
