@@ -15,7 +15,7 @@ toolbelt.
 
 Rembg is a tool to remove the background of any image or photo. 
 
-    pip install rembg
+    pip install rembg[cli]
 
 To use `rembg`, simply run:
 
