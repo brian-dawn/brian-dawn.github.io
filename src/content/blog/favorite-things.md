@@ -15,11 +15,15 @@ toolbelt.
 
 Rembg is a tool to remove the background of any image or photo. 
 
-    pip install rembg[cli]
+```bash
+pip install rembg[cli]
+```
 
 To use `rembg`, simply run:
 
-    rembg i input.png output.png
+```bash
+rembg i input.png output.png
+```
 
 # SingleFile
 
@@ -38,8 +42,10 @@ Send files/folders to someone else directly and easily.
 
 Install with any of these:
 
-    curl https://getcroc.schollz.com | bash
-    sudo pacman -S croc
+```bash
+curl https://getcroc.schollz.com | bash
+sudo pacman -S croc
+```
 
 # nvtop
 
@@ -49,7 +55,9 @@ Like htop but for GPUs.
 
 Install with:
 
-    sudo pacman -S nvtop
+```bash
+sudo pacman -S nvtop
+```
 
 # starship
 
@@ -59,7 +67,9 @@ A fancy and fast shell prompt.
 
 Install via:
 
-    curl -fsSL https://starship.rs/install.sh | bash
+```bash
+curl -fsSL https://starship.rs/install.sh | bash
+```
 
 # sshb0t
 
@@ -68,7 +78,7 @@ Install via:
 Use this to keep authorized keys on servers for easier
 ssh access. Run with docker:
 
-```
+```bash
 docker run -d --restart always \
     --name sshb0t \
     -v ${HOME}/.ssh/authorized_keys:/root/.ssh/authorized_keys \
@@ -84,9 +94,11 @@ A fuzzy file finder that can integrate with your shell to give you fuzzy searchi
 
 Installation options:
 
-    brew install fzf && $(brew --prefix)/opt/fzf/install
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-    sudo pacman -S fzf
+```bash
+brew install fzf && $(brew --prefix)/opt/fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+sudo pacman -S fzf
+```
 
 # rg
 
@@ -96,9 +108,11 @@ Extremely fast searching of files and directories.
 
 Installation options:
 
-    brew install ripgrep
-    pacman -S ripgrep
-    cargo install ripgrep
+```bash
+brew install ripgrep
+pacman -S ripgrep
+cargo install ripgrep
+```
 
 # dust
 
@@ -106,13 +120,17 @@ Installation options:
 
 A better version of `du`. Run it just with:
 
-    dust some-folder
+```bash
+dust some-folder
+```
 
 To get a nice display of what's taking up space inside that folder.
 
 Installation options:
 
-    cargo install du-dust
+```bash
+cargo install du-dust
+```
 
 # syncthing
 
@@ -126,13 +144,17 @@ your devices.
 Convert to and from a large number of markup formats. I like standalone html pages
 with embedded CSS. You can do this with the following command:
 
-    pandoc --self-contained --table-of-contents --to html5+auto_identifiers
-           --standalone INPUT.md --output OUTPUT.html
+```bash
+pandoc --self-contained --table-of-contents --to html5+auto_identifiers
+       --standalone INPUT.md --output OUTPUT.html
 
+```
 This will even base64 encode included images and embed them into the resulting HTML.
 If you don't want a table of contents just leave off the flag. If you want to embed a CSS file add the following to the above
 command:
 
-    --css=YOURCSS.css
+```bash
+--css=YOURCSS.css
+```
 
 For a good example of some nice CSS check out this [gist](https://gist.github.com/killercup/5917178). Also pandoc can generate HTML presentations from markdown.
