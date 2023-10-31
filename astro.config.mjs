@@ -9,8 +9,8 @@ export default defineConfig({
   site: "https://example.com",
   markdown: {
     shikiConfig: {
-      //theme: "monokai",
-      theme: "dracula-soft",
+      theme: "monokai",
+      // theme: "dracula-soft",
     },
   },
   integrations: [mdx(), sitemap(), tailwind()],
