@@ -181,11 +181,15 @@ CMD /usr/local/bin/example
 
 We should be able to use docker to build it at this point:
 
-    docker build -t example .
+```bash
+docker build -t example .
+```
 
 And when that completes we should be able to run it:
 
-    docker run -it example
+```bash
+docker run -it example
+```
 
 # The dev container
 
