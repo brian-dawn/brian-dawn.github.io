@@ -22,11 +22,15 @@ If you are fine with the system Python you can skip this step.
 
 On macos:
 
-    brew install pyenv
+```bash
+brew install pyenv
+```
 
 Others:
 
-    curl https://pyenv.run | bash
+```bash
+curl https://pyenv.run | bash
+```
 
 Update your `.bashrc` file to load pyenv:
 
@@ -38,28 +42,38 @@ eval "$(pyenv init -)"
 
 Source your `.bashrc` to load the changes:
 
-    source ~/.bashrc
+```bash
+source ~/.bashrc
+```
 
 ## Getting Started
 
 Lets create a new folder for our test project:
 
-    mkdir test-project
-    cd test-project
+```bash
+mkdir test-project
+cd test-project
+```
 
 Lets use python 3.9. We can use pyenv to install it:
 
-    pyenv install 3.9.16
+```bash
+pyenv install 3.9.16
+```
 
 We can create a `.python-version` file in the project which will auto
 load and set us on 3.9 when we cd into this directory with:
 
-    pyenv local 3.9.16
-    cat .python-version
+```bash
+pyenv local 3.9.16
+cat .python-version
+```
 
 We can verify that we are using the correct python version:
 
-    python --version
+```bash
+python --version
+```
 
 ## Creating a virtualenv with venv
 
@@ -70,20 +84,28 @@ This will let us maintain separate versions of various packages if we need to.
 
 Create the virtualenv:
 
-    python -m venv .venv
+```bash
+python -m venv .venv
+```
 
 This creates a folder called `.venv` which contains our virtual environment. We can activate it with the following:
 
-    source .venv/bin/activate
+```bash
+source .venv/bin/activate
+```
 
 Now all our python tools should be scoped to the virtualenv. Running:
 
-    which python
+```bash
+which python
+```
 
 Should show that our python is being sourced by the .venv folder. If you ever want to break free from the virtual environment
 you can run:
 
-    deactivate
+```bash
+deactivate
+```
 
 ## Using pip inside the virtual environment
 
@@ -92,19 +114,27 @@ global pip/python environment.
 
 It is common to create a file called `requirements.txt` which contains our list of dependencies.
 
-    touch requirements.txt
+```bash
+touch requirements.txt
+```
 
 Lets install numpy, so add the following to `requirements.txt`:
 
-    numpy==1.24.4
+```bash
+numpy==1.24.4
+```
 
 If you don't care about the version you could just say `numpy` but I recommend freezing the deps then which I describe later in this document. Now we can install things to the virtual environment with:
 
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
 We can validate that this worked by dropping into a python shell:
 
-    python
+```bash
+python
+```
 
 Now lets import numpy:
 
@@ -115,25 +145,33 @@ exit()
 
 Another way we can do this is by installing directly with pip, lets install a code formatter called `black`:
 
-    pip install black
+```bash
+pip install black
+```
 
 The issue here though is if we want to pull the project down again we need to remember we installed this. We can leverage
 a command called `pip freeze` to export our environment back to the `requirements.txt` file.
 
 Go ahead and run:
 
-    pip freeze
+```bash
+pip freeze
+```
 
 You'll see it also dumps out the transitive dependencies we would like to install as well. To avoid polluting our main `requirements.txt` file
 I like to store the frozen deps in a different file, but that's up to you:
 
-    pip freeze > requirements-frozen.txt
+```bash
+pip freeze > requirements-frozen.txt
+```
 
 ## Using VS Code
 
 If you use VS code things should just work out of the box. You need to open the project while the virtual environment is activated:
 
-    code .
+```bash
+code .
+```
 
 The correct python version as well as the virtual environment should be shown at the bottom right. If you create a new python file called `main.py`
 you should be able to insert the following program:
@@ -152,8 +190,10 @@ You should have auto complete setup automatically at this point.
 
 I recommend using `black`. You can install/use it with:
 
-    pip install black
-    black .
+```bash
+pip install black
+black .
+```
 
 Don't forget to freeze it in your requirements file!
 
@@ -161,8 +201,10 @@ Don't forget to freeze it in your requirements file!
 
 I like `ruff`. You can install/use it with:
 
-    pip install ruff
-    ruff .
+```bash
+pip install ruff
+ruff .
+```
 
 Don't forget to freeze it in your requirements file!
 
@@ -170,9 +212,11 @@ Don't forget to freeze it in your requirements file!
 
 I recommend `pytest`. Install it with:
 
-    pip install pytest
-    mkdir test
-    touch test/my_test.py
+```bash
+pip install pytest
+mkdir test
+touch test/my_test.py
+```
 
 Inside `my_test.py` add:
 
@@ -183,7 +227,9 @@ def test_failure():
 
 Now you can run:
 
-    pytest
+```bash
+pytest
+```
 
 And you should see failures.
 
@@ -192,7 +238,9 @@ And you should see failures.
 Lets use `mypy` to test do typechecking. VS Code ships with its own which works well but here's how we can
 check things via the CLI:
 
-    pip install mypy
+```bash
+pip install mypy
+```
 
 Lets add this function to our `main.py` file:
 
@@ -203,7 +251,9 @@ def type_checker_fail() -> int:
 
 Now run:
 
-    mypy .
+```bash
+mypy .
+```
 
 And you should see the type error.
 
