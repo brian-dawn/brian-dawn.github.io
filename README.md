@@ -1,5 +1,12 @@
 # New Blog
 
+## Run it
+
+```bash
+npm install
+npm run dev
+```
+
 ## Generating planets
 
 Dalle3:
