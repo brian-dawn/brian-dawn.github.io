@@ -1,0 +1,4 @@
+[submodule "catpuccin-compiled"]
+	path = catpuccin-compiled
+	url = https://github.com/catppuccin/vscode.git
+	branch = compiled

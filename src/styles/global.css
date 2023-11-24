@@ -1,14 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-    color: rgb(205, 196, 206);
     font-size: 1.5em;
-    background: linear-gradient(
-        72deg, 
-        #141316 25%, 
-        #4b4852 100%
-    );
     position: relative;
     min-height: 100vh;
+    /*background-color: #f3e6e3; */
 }
 
 
@@ -22,7 +20,6 @@ body {
 
 
 pre {
-  background-color: #000000 !important; 
 }
 
 
@@ -38,7 +35,6 @@ li {
 
 li::before {
   content: "● ";
-  color: rgba(255,155,0,1); /* or whatever color you prefer */
 }
 
 

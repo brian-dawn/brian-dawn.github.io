@@ -19,6 +19,7 @@
     "three": "^0.157.0"
   },
   "devDependencies": {
+    "@catppuccin/tailwindcss": "^0.1.6",
     "@tailwindcss/typography": "^0.5.10"
   }
 }
