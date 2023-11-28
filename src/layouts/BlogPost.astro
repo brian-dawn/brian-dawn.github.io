@@ -35,14 +35,6 @@ const { title, description, pubDate, updatedDate, banner } = Astro.props;
             </div>
 
             <div class="flex items-center">
-              {
-                banner && (
-                  <div class="banner-container flex-shrink h-auto mr-4">
-                    <img class="flex-shrink" src={banner} alt="" />
-                  </div>
-                )
-              }
-
               <h1 class="h-auto m-0 leading-tight text-6xl text-peach">
                 {title}
               </h1>
