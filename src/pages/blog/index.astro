@@ -23,11 +23,11 @@ const posts = (await getCollection("blog")).sort(
       <section class="text-center mx-auto">
         {
           posts.map((post) => (
-            <div class="flex flex-col items-center w-full">
+            <div class="flex flex-col items-center w-full p-4">
+
               <a href={`/blog/${post.slug}/`}>
                 <h4 class="title text-pink">{post.data.title}</h4>
               </a>
-              <div class="text-yellow">⬤</div>
             </div>
           ))
         }
