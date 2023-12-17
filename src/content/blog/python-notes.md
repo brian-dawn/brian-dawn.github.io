@@ -233,6 +233,43 @@ pytest
 
 And you should see failures.
 
+### Adding src paths
+
+Let say you had the following code in `src/main.py`:
+
+```python
+def add_one(x):
+    return x + 1
+```
+
+Now lets say we had the following test in `test/test_main.py`:
+
+```python
+from main import add_one
+
+def test_add_one():
+    assert add_one(1) == 2
+```
+
+You'll notice that the import fails to resolve. Historically in Python you would need to update
+the PYTHONPATH environment variable to fix the path issues. As of pytest v7+ you can now use
+a `pyproject.toml` file in your project root to accomplish this.
+
+```bash
+touch pyproject.toml
+```
+
+And inside put:
+
+```toml
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+```
+
+Now `pytest` should work.
+
 ## Typechecking
 
 Lets use `mypy` to test do typechecking. VS Code ships with its own which works well but here's how we can
