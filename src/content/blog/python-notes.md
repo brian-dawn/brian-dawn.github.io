@@ -11,6 +11,8 @@ how to manage projects.
 Here is my ultra minimal Python setup. It
 only requires the installation of one non-standard tool.
 
+---
+
 # Project Management
 
 ## Install pyenv
@@ -45,6 +47,8 @@ Source your `.bashrc` to load the changes:
 ```bash
 source ~/.bashrc
 ```
+
+---
 
 ## Getting Started
 
@@ -184,7 +188,10 @@ print(a)
 
 You should have auto complete setup automatically at this point.
 
+---
+
 # Common tools and libraries
+
 
 ## Code formatting
 
@@ -197,6 +204,8 @@ black .
 
 Don't forget to freeze it in your requirements file!
 
+---
+
 ## Linting
 
 I like `ruff`. You can install/use it with:
@@ -207,6 +216,8 @@ ruff .
 ```
 
 Don't forget to freeze it in your requirements file!
+
+---
 
 ## Tests
 
@@ -270,6 +281,8 @@ pythonpath = [
 
 Now `pytest` should work.
 
+---
+
 ## Typechecking
 
 Lets use `mypy` to test do typechecking. VS Code ships with its own which works well but here's how we can
@@ -293,6 +306,8 @@ mypy .
 ```
 
 And you should see the type error.
+
+---
 
 ## Debugging
 
