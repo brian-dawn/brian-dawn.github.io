@@ -27,7 +27,6 @@ You can find my neovim config on
 | `<CMD-v>`                | Paste from clipboard in various modes.                 |
 
 
-
 ## Plugins and their shortcuts
 
 

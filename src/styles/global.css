@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    font-size: 1.5em;
+    font-size: 1.1em;
     position: relative;
     min-height: 100vh;
     /*background-color: #f3e6e3; */
