@@ -2,7 +2,7 @@
 import * as THREE from "three";
 ---
 
-<div id="three-container" style="width: 100px; height: 100px;"></div>
+<div id="three-container" style="width: 75px; height: 75px;"></div>
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"
   integrity="sha512-nogdM20cZX4FjsqU5H5ecK3vw8LjYN1AcUUWi7asLUVP3eJK5wldywvqFMW8CLd5/xoiJaIL3eXG82SlOWZkTA=="
@@ -104,7 +104,7 @@ void main() {
   camera.position.z = 2;
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-  renderer.setSize(100, 100);
+  renderer.setSize(75, 75);
   threeContainer.appendChild(renderer.domElement);
 
   var sphere_geometry = new THREE.SphereGeometry(1, 128, 128);
