@@ -1,5 +1,5 @@
 ---
-title: "Quick Python Guide"
+title: "Updated Python Guide"
 description: "Updated notes on minimal python"
 pubDate: "Aug 17 2024"
 ---
