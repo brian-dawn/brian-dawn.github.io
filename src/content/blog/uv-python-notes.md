@@ -128,13 +128,15 @@ runtime validation of data through Python type hints.
 uv add pydantic
 ```
 
-````python
+```python
 from pydantic import BaseModel
 
 class Location(BaseModel):
 
     latitude: float
     longitude: float
+
+```
 
 Now you can parse some json:
 
@@ -144,7 +146,7 @@ Now you can parse some json:
     "latitude": 34.3,
     "longitude": 23.8
 }
-````
+```
 
 All that is needed to parse this is:
 
