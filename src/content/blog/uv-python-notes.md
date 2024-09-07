@@ -43,10 +43,6 @@ You can also run things through uv without needing to source the virtual env.
 uv run python
 ```
 
-```bash
-uv run code .
-```
-
 ## Sync with the lock files
 
 ```bash
