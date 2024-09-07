@@ -77,6 +77,8 @@ uv python install
 uv self update
 ```
 
+---
+
 # Ruff
 
 `ruff` is a very fast and well thought out linter and code formatter for Python.
@@ -112,6 +114,8 @@ You can also attempt to have ruff fix lint issues for you:
 ```bash
 ruff check --fix .
 ```
+
+---
 
 # Pydantic
 
