@@ -163,20 +163,6 @@ Importantly if you pass in invalid data you will get an error message.
 You should be validating data at the edges of your program ideally, any
 inputs, and any outputs.
 
-# Recommendations for Data Science
-
-TODO, also test torch with uv
-
-## VS Code
-
-todo
-
-## Jupyter
-
-```bash
-uv add --dev jupyter pandas plotly
-```
-
 ---
 
 # General principals and gotchas
@@ -269,6 +255,3 @@ to invoke your function. If you want to treat Python like a statically typed lan
 like `mypy` to validate that your hints are correct. If you use an editor like `VS Code` that will also offer out of the box validation
 of types.
 
-## Getting fancy with union types
-
-todo
