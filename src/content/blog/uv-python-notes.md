@@ -191,7 +191,8 @@ config_dict = {
 }
 ```
 
-Use a dataclass (or Pydantic BaseModel) instead:
+Assuming your keys in your dictionary are not dynamic
+use a dataclass (or Pydantic BaseModel) instead:
 
 ```python
 from dataclasses import dataclass
@@ -231,7 +232,7 @@ It's more code, but now we get:
 
 ## Utilizing type hints
 
-todo 
+todo
 
 ## Getting fancy with union types
 
