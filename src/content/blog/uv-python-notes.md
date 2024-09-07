@@ -265,12 +265,8 @@ def details_string(name: str, age: int) -> str:
 ```
 
 You should treat these as necessary documentation for how callers are expected
-to invoke your function.
-
-If you want to treat Python like a statically typed language you can use a tool
-like `mypy` to validate that your hints are correct.
-
-If you use an editor like `VS Code` that will also offer out of the box validation
+to invoke your function. If you want to treat Python like a statically typed language you can use a tool
+like `mypy` to validate that your hints are correct. If you use an editor like `VS Code` that will also offer out of the box validation
 of types.
 
 ## Getting fancy with union types
