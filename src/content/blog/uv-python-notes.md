@@ -221,6 +221,29 @@ class Config():
 config = Config(happiness=HappinessLevel.SEVERE)
 ```
 
+Now one issue with this is we can still incorrectly assign an invalid type to our
+config dataclass.
+
+```python
+config = Config(happiness=12312312)
+```
+
+This is where `pydantic` comes in.
+
+```python
+from pydantic import BaseModel
+from enum import Enum
+
+class HappinessLevel(Enum):
+    SEVERE = "severe"
+    EXTREME = "extreme"
+
+class Config(BaseModel):
+    happiness: HappinessLevel
+
+config = Config(happiness=HappinessLevel.SEVERE)
+```
+
 It's more code, but now we get:
 
 1. **Editor support:** We can now jump to definition to our available options.
