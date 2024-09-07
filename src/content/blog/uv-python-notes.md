@@ -6,7 +6,7 @@ pubDate: "Aug 17 2024"
 
 # uv
 
-`uv` is the current best way to manage python projects.
+[uv](https://docs.astral.sh/uv/) is the current best way to manage python projects.
 It is a replacement for pip, poetry, pyenv, etc. etc.
 
 ## Installation
@@ -81,7 +81,7 @@ uv self update
 
 # Ruff
 
-`ruff` is a very fast and well thought out linter and code formatter for Python.
+[ruff](https://astral.sh/ruff) is a very fast and well thought out linter and code formatter for Python.
 
 ## Installation
 
