@@ -140,11 +140,10 @@ class Location(BaseModel):
 
 Now you can parse some json:
 
-
 ```json
 {
-    "latitude": 34.3,
-    "longitude": 23.8
+  "latitude": 34.3,
+  "longitude": 23.8
 }
 ```
 
@@ -163,3 +162,77 @@ print(location.model_dump_json())
 Importantly if you pass in invalid data you will get an error message.
 You should be validating data at the edges of your program ideally, any
 inputs, and any outputs.
+
+# Recommendations for Data Science
+
+TODO, also test torch with uv
+
+## VS Code
+
+todo
+
+## Jupyter
+
+```bash
+uv add --dev jupyter pandas plotly
+```
+
+---
+
+# General principals and gotchas
+
+## Avoiding tuples and dictionaries
+
+While it's tempting to write something like:
+
+```python
+config_dict = {
+    "happiness": "extreme"
+}
+```
+
+Use a dataclass (or Pydantic BaseModel) instead:
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class Config():
+    happiness: str
+
+config = Config(happiness="severe")
+```
+
+And using `enums` is even better too:
+
+```python
+from dataclasses import dataclass
+from enum import Enum
+
+class HappinessLevel(Enum):
+    SEVERE = "severe"
+    EXTREME = "extreme"
+
+@dataclass
+class Config():
+    happiness: HappinessLevel
+
+config = Config(happiness=HappinessLevel.SEVERE)
+```
+
+It's more code, but now we get:
+
+1. **Editor support:** We can now jump to definition to our available options.
+2. **Runtime checks:** Python is a **strongly** typed dynamic language. This means that
+   we should expect things to explode at runtime if the types are wrong. If we don't select
+   a valid happiness level in our enum we will fail.
+3. **Optional static checks:** Modern Python editors will show you if you are utilizing types
+   incorrectly at compile time.
+
+## Utilizing type hints
+
+todo 
+
+## Getting fancy with union types
+
+todo
