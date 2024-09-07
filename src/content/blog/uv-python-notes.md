@@ -228,7 +228,8 @@ config dataclass.
 config = Config(happiness=12312312)
 ```
 
-This is where `pydantic` comes in.
+This is where `pydantic` comes in as it actually validates whether the types that
+get passed in are correct. This does come at a slight performance cost however.
 
 ```python
 from pydantic import BaseModel
@@ -255,7 +256,22 @@ It's more code, but now we get:
 
 ## Utilizing type hints
 
-todo
+Ideally every function you write will have type hints attached to the return type
+and arguments.
+
+```python
+def details_string(name: str, age: int) -> str:
+    return f"Hello {name} you are {age} years old"
+```
+
+You should treat these as necessary documentation for how callers are expected
+to invoke your function.
+
+If you want to treat Python like a statically typed language you can use a tool
+like `mypy` to validate that your hints are correct.
+
+If you use an editor like `VS Code` that will also offer out of the box validation
+of types.
 
 ## Getting fancy with union types
 
