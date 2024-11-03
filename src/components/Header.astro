@@ -4,15 +4,19 @@ import { SITE_TITLE } from "../consts";
 import Ball from "./Ball.astro";
 ---
 
-<header
-  class="mocha bg-base text-lavender backdrop-blur content-box p-2 mb-12 drop-shadow-xl shadow-xl mx-auto font-sans"
->
-  <nav class="flex justify-between items-center font-sans max-w-6xl mx-auto pr-6 pl-6">
+<header class="is-fixed-above-lg is-fixed">
+  <nav class="container">
     <Ball />
-    <div class="flex space-x-4 text-lavender font-sans">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/resume">Resume</HeaderLink>
+    <div>
+      <HeaderLink style="padding-right: .5em" class="contrast" href="/"
+        >Home</HeaderLink
+      >
+      <HeaderLink style="padding-right: .5em" class="contrast" href="/blog"
+        >Blog</HeaderLink
+      >
+      <HeaderLink style="padding-right: .5em" class="contrast" href="/resume"
+        >Resume</HeaderLink
+      >
     </div>
   </nav>
 </header>

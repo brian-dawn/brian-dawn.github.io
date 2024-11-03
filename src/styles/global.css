@@ -1,41 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-body {
-    font-size: 1.1em;
-    position: relative;
-    min-height: 100vh;
-    /*background-color: #f3e6e3; */
+body>header.is-fixed-above-lg {
+    z-index: 2;
+    position: sticky;
+    top: 0;
+    -webkit-backdrop-filter: blur(1rem);
+    backdrop-filter: blur(1rem);
+    background-color: var(--pico-header-background);
 }
 
-table th,
-table td {
-  border: 1px solid rgba(0,0,0,0.3);
-  padding: .5em; 
+body>header.is-fixed-above-lg.is-fixed {
+    border-bottom-color: var(--pico-header-border-color);
 }
 
 
 
-.banner-container {
-
-  width: 5em;       /* Define the size of the circular view */
-  height: 5em;
-
-}
-
-ul {
-  list-style: none;
-}
-
-li {
-  padding-left: 1em; 
-  text-indent: -.5em;
-}
-
-li::before {
-  content: "● ";
-}
 
 
 

@@ -2,19 +2,26 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
-import tailwind from "@astrojs/tailwind";
-
-import customTheme from "./catpuccin-compiled/mocha.json";
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
   markdown: {
     shikiConfig: {
-      theme: customTheme,
-      //theme: "monokai",
+      // theme: "rose-pine",
       // theme: "dracula-soft",
+      defaultColor: false,
+      theme: "catppuccin-frappe",
+
+      // themes: {
+      //   light: "github-light",
+      //   dark: "github-dark",
+      // },
+
+      // themes: {
+      //   light: "rose-pine-dawn",
+      //   dark: "rose-pine-moon",
+      // },
     },
   },
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [mdx(), sitemap()],
 });

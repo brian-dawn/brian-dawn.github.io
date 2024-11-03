@@ -11,11 +11,14 @@ import MainContent from "../components/MainContent.astro";
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body class="mocha text-text bg-mantle">
+
+  <body>
     <Header title={SITE_TITLE} />
-    <MainContent>
-      <p>Welcome to my website!</p>
-    </MainContent>
+    <main class="container">
+      <MainContent>
+        <p>Welcome to my website!</p>
+      </MainContent>
+    </main>
     <Footer />
   </body>
 </html>

@@ -16,11 +16,10 @@ const { title, description, pubDate, updatedDate, banner } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="mocha bg-mantle">
+  <body>
     <Header />
-
     <MainContent>
-      <article>
+      <main class="container">
         <div>
           <div class="title">
             <div class="date">
@@ -43,7 +42,7 @@ const { title, description, pubDate, updatedDate, banner } = Astro.props;
           <hr />
           <slot />
         </div>
-      </article>
+      </main>
     </MainContent>
     <Footer />
   </body>
