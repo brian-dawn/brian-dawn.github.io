@@ -21,16 +21,21 @@ const posts = (await getCollection("blog")).sort(
   <body>
     <Header />
     <MainContent>
-      <main class="container">
-        {
-          posts.map((post) => (
-            <div>
-              <a class="contrast" href={`/blog/${post.slug}/`}>
-                <h4>{post.data.title}</h4>
-              </a>
-            </div>
-          ))
-        }
+      <main
+        style="display: flex; justify-content: center; margin-top: 5em"
+        class="container"
+      >
+        <ul>
+          {
+            posts.map((post) => (
+              <li>
+                <a class="contrast" href={`/blog/${post.slug}/`}>
+                  {post.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </main>
     </MainContent>
     <Footer />
