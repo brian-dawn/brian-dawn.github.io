@@ -10,17 +10,17 @@ export default defineConfig({
       // theme: "rose-pine",
       // theme: "dracula-soft",
       // defaultColor: false,
-      theme: "laserwave",
+      // theme: "laserwave",
 
       // themes: {
       //   light: "github-light",
       //   dark: "github-dark",
       // },
 
-      // themes: {
-      //   light: "rose-pine-dawn",
-      //   dark: "rose-pine-moon",
-      // },
+      themes: {
+        light: "rose-pine-dawn",
+        dark: "rose-pine-moon",
+      },
     },
   },
   integrations: [mdx(), sitemap()],

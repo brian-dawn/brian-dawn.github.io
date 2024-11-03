@@ -62,3 +62,21 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.violet.css"
 />
+
+<script>
+  const setTheme = () => {
+    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDark ? "dark" : "light"
+    );
+  };
+
+  // Set initial theme based on system preference
+  setTheme();
+
+  // Listen for system theme changes
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", setTheme);
+</script>
