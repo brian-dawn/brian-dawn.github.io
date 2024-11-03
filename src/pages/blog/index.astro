@@ -27,11 +27,16 @@ const posts = (await getCollection("blog")).sort(
       >
         <ul>
           {
-            posts.map((post) => (
-              <li>
-                <a class="contrast" href={`/blog/${post.slug}/`}>
+            posts.reverse().map((post: any) => (
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <a
+                  class="contrast"
+                  style="padding-right: 2em"
+                  href={`/blog/${post.slug}/`}
+                >
                   {post.data.title}
                 </a>
+                <FormattedDate date={post.data.pubDate} />
               </li>
             ))
           }
