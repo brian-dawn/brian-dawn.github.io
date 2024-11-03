@@ -9,8 +9,8 @@ export default defineConfig({
     shikiConfig: {
       // theme: "rose-pine",
       // theme: "dracula-soft",
-      defaultColor: false,
-      theme: "catppuccin-frappe",
+      // defaultColor: false,
+      theme: "laserwave",
 
       // themes: {
       //   light: "github-light",
