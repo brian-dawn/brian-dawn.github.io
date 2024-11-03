@@ -12,15 +12,15 @@ export default defineConfig({
       // defaultColor: false,
       // theme: "laserwave",
 
-      // themes: {
-      //   light: "github-light",
-      //   dark: "github-dark",
-      // },
-
       themes: {
-        light: "rose-pine-dawn",
-        dark: "rose-pine-moon",
+        light: "github-light-high-contrast",
+        dark: "github-dark-high-contrast",
       },
+
+      // themes: {
+      //   light: "rose-pine-dawn",
+      //   dark: "rose-pine-moon",
+      // },
     },
   },
   integrations: [mdx(), sitemap()],
