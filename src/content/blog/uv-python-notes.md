@@ -124,6 +124,8 @@ runtime validation of data through Python type hints.
 uv add pydantic
 ```
 
+Now we can define a model with:
+
 ```python
 from pydantic import BaseModel
 
