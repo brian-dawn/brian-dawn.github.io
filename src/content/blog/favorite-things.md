@@ -47,6 +47,12 @@ curl https://getcroc.schollz.com | bash
 sudo pacman -S croc
 ```
 
+# zoxide
+
+[github](https://github.com/ajeetdsouza/zoxide)
+
+Fuzzy cd.
+
 # nvtop
 
 [github](https://github.com/Syllo/nvtop)
