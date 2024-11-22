@@ -1,6 +1,6 @@
 ---
 title: "Dotfile Management"
-description: "Lorem ipsum dolor sit amet"
+description: "How I manage my dotfiles using only git."
 pubDate: "Jun 12 2020"
 banner: "/planet01.png"
 ---

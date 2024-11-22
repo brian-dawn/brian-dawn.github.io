@@ -1,6 +1,6 @@
 ---
 title: "Running Lots of Apps on Digital Ocean"
-description: ""
+description: "This is a WIP."
 pubDate: "Nov 17 2024"
 ---
 

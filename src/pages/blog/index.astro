@@ -21,26 +21,28 @@ const posts = (await getCollection("blog")).sort(
   <body>
     <Header />
     <MainContent>
-      <main
-        style="display: flex; justify-content: center; margin-top: 5em"
-        class="container"
-      >
-        <ul>
+      <main class="container">
           {
             posts.reverse().map((post: any) => (
-              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>
+
+                  {post.data.title}
+</h3>
+    <small class="date">
+                <FormattedDate date={post.data.pubDate} />
+                </small>
+                <p>
+                {post.data.description}
+                </p>
                 <a
-                  class="contrast"
-                  style="padding-right: 2em"
                   href={`/blog/${post.slug}/`}
                 >
-                  {post.data.title}
+                  Read more...
                 </a>
-                <FormattedDate date={post.data.pubDate} />
-              </li>
+
+                  <hr />
             ))
           }
-        </ul>
       </main>
     </MainContent>
     <Footer />

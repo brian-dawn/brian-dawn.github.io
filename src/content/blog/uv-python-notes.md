@@ -1,6 +1,7 @@
 ---
 title: "Updated Python Guide"
-description: "Updated notes on minimal python"
+description: "Updated notes on minimal python using only uv to manage both python versions
+as well as dependencies and projects."
 pubDate: "Aug 17 2024"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Favorite Things"
-description: ""
+description: "Some of my favorite tools that I use frequently."
 pubDate: "Apr 04 2020"
 banner: "/planet02.png"
 ---

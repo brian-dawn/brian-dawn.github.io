@@ -1,6 +1,6 @@
 ---
 title: "Quick Python Guide"
-description: "My notes on minimal Python"
+description: "My notes on minimal Python, only leveraging pip and pyenv."
 pubDate: "Jul 22 2022"
 banner: "/planet03.png"
 ---
