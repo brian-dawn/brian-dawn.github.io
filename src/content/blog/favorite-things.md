@@ -9,21 +9,17 @@ This is a list of some of my favorite tools that are maybe lesser known. This fi
 exists mostly so I can keep track of all the things I need to remember I have in my
 toolbelt.
 
-# Rembg
+# Duckdb
 
-[github](https://github.com/danielgatis/rembg)
+TODO
 
-Rembg is a tool to remove the background of any image or photo. 
+# Obsidian
 
-```bash
-pip install rembg[cli]
-```
+TODO
 
-To use `rembg`, simply run:
+# Helix Editor
 
-```bash
-rembg i input.png output.png
-```
+TODO
 
 # SingleFile
 
@@ -138,12 +134,6 @@ Installation options:
 cargo install du-dust
 ```
 
-# syncthing
-
-[github](https://github.com/syncthing/syncthing)
-
-Think of it like a peer to peer dropbox clone. Your files only ever live on
-your devices.
 
 # pandoc
 
