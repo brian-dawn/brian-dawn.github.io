@@ -28,7 +28,9 @@ const posts = (await getCollection("blog")).sort(
 
                   {post.data.title}
 </h2>
+<p>
                 <FormattedDate date={post.data.pubDate} />
+                </p>
                 <p>
                 {post.data.description}
                 </p>
