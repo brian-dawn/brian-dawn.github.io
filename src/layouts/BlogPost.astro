@@ -23,7 +23,6 @@ const { title, description, pubDate, updatedDate, banner } = Astro.props;
         <div>
           <div class="title">
             <div>
-              <FormattedDate date={pubDate} />
               {
                 updatedDate && (
                   <div class="last-updated-on">
@@ -37,6 +36,8 @@ const { title, description, pubDate, updatedDate, banner } = Astro.props;
               <h1 class="h-auto m-0 leading-tight text-4xl">
                 {title}
               </h1>
+
+              <FormattedDate date={pubDate} />
             </div>
           </div>
           <hr />
