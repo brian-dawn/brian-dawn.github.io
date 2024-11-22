@@ -13,8 +13,8 @@ export default defineConfig({
       // theme: "laserwave",
 
       themes: {
-        light: "github-light-high-contrast",
-        dark: "github-dark-high-contrast",
+        light: "rose-pine-dawn",
+        dark: "rose-pine",
       },
 
       // themes: {
