@@ -19,10 +19,10 @@ const { title, description, pubDate, updatedDate, banner } = Astro.props;
   <body>
     <Header />
     <MainContent>
-      <main class="container" >
+      <main class="container">
         <div>
           <div class="title">
-            <div class="date">
+            <div>
               <FormattedDate date={pubDate} />
               {
                 updatedDate && (

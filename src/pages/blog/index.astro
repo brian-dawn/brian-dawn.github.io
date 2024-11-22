@@ -24,13 +24,11 @@ const posts = (await getCollection("blog")).sort(
       <main class="container">
           {
             posts.reverse().map((post: any) => (
-                <h3>
+                <h2>
 
                   {post.data.title}
-</h3>
-    <small class="date">
+</h2>
                 <FormattedDate date={post.data.pubDate} />
-                </small>
                 <p>
                 {post.data.description}
                 </p>

@@ -67,7 +67,9 @@ h5,
 h6 {
     --pico-font-weight: 600;
     /* Original: 700 */
+
 }
+
 
 article {
     border: 1px solid var(--pico-muted-border-color);
@@ -86,4 +88,5 @@ article>footer {
     font-size: 0.875rem;
     /* Original: 0.75rem */
     color: var(--pico-muted-color);
+
 }
