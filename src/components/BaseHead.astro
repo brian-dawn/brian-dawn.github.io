@@ -80,3 +80,9 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", setTheme);
 </script>
+
+<style>
+  :root {
+    --container-width: 400px;
+  }
+</style>
