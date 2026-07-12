@@ -6,7 +6,7 @@ import MainContent from "../../components/MainContent.astro";
 
 const recipes = [
   { title: "Greek White Bean Skillet", href: "/recipes/greek-white-bean-skillet/", detail: "15 minutes · Serves 2" },
-  { title: "Pakistani Chicken Karahi", href: "/recipes/pakistani-chicken-karahi/", detail: "30 minutes · Serves 2–4" },
+  { title: "Pakistani Chicken Karahi", href: "/recipes/pakistani-chicken-karahi/" },
   { title: "Smashed Beef Kebab With Cucumber Yogurt", href: "/recipes/smashed-beef-kebab-with-cucumber-yogurt/", detail: "20–25 minutes · Serves 4" },
   { title: "Greek Yogurt Flatbread", href: "/recipes/greek-yogurt-flatbread/", detail: "20 minutes · Makes 2 flatbreads" },
 ];
@@ -25,7 +25,7 @@ const recipes = [
           {recipes.map((recipe) => (
             <li>
               <a href={recipe.href}>{recipe.title}</a>
-              <small>{recipe.detail}</small>
+              {recipe.detail && <small>{recipe.detail}</small>}
             </li>
           ))}
         </ul>
