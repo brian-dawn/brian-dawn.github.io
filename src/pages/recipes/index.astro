@@ -1,0 +1,44 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import MainContent from "../../components/MainContent.astro";
+
+const recipes = [
+  { title: "Greek White Bean Skillet", href: "/recipes/greek-white-bean-skillet/", detail: "15 minutes · Serves 2" },
+  { title: "Pakistani Chicken Karahi", href: "/recipes/pakistani-chicken-karahi/", detail: "30 minutes · Serves 2–4" },
+  { title: "Smashed Beef Kebab With Cucumber Yogurt", href: "/recipes/smashed-beef-kebab-with-cucumber-yogurt/", detail: "20–25 minutes · Serves 4" },
+  { title: "Greek Yogurt Flatbread", href: "/recipes/greek-yogurt-flatbread/", detail: "20 minutes · Makes 2 flatbreads" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head><BaseHead title="Recipes" description="Brian's recipe collection" /></head>
+  <body>
+    <Header title="Recipes" />
+    <main class="container recipes-index">
+      <MainContent>
+        <h1>Recipes</h1>
+        <p>A small collection of recipes worth keeping.</p>
+        <ul class="recipe-list">
+          {recipes.map((recipe) => (
+            <li>
+              <a href={recipe.href}>{recipe.title}</a>
+              <small>{recipe.detail}</small>
+            </li>
+          ))}
+        </ul>
+      </MainContent>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .recipes-index { max-width: 760px; }
+  .recipe-list { list-style: none; padding: 0; margin-top: 2rem; }
+  .recipe-list li { padding: 1rem 0; border-bottom: 1px solid var(--pico-muted-border-color); }
+  .recipe-list a { display: block; font-size: 1.15rem; font-weight: 700; }
+  .recipe-list small { display: block; margin-top: .25rem; }
+</style>
