@@ -1,0 +1,61 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import MainContent from "../components/MainContent.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  servings?: string;
+  time?: string;
+  source?: string;
+}
+
+const { title, description, servings, time, source } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${title} | Recipes`} description={description} />
+  </head>
+  <body>
+    <Header title={title} />
+    <main class="container recipe-page">
+      <MainContent>
+        <a class="back-link" href="/recipes/">← All recipes</a>
+        <article>
+          <header class="recipe-header">
+            <h1>{title}</h1>
+            <p>{description}</p>
+            {(servings || time) && (
+              <dl class="recipe-meta">
+                {servings && <><dt>Servings</dt><dd>{servings}</dd></>}
+                {time && <><dt>Time</dt><dd>{time}</dd></>}
+              </dl>
+            )}
+          </header>
+          <slot />
+          {source && (
+            <p class="recipe-source"><strong>Source:</strong> <a href={source} rel="noreferrer">Original recipe</a></p>
+          )}
+        </article>
+      </MainContent>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .recipe-page { max-width: 760px; }
+  .back-link { display: inline-block; margin-bottom: 1rem; }
+  .recipe-header { margin-bottom: 2rem; }
+  .recipe-header h1 { margin-bottom: .5rem; }
+  .recipe-meta { display: grid; grid-template-columns: max-content 1fr; gap: .25rem 1rem; margin-top: 1rem; }
+  .recipe-meta dt { font-weight: 700; }
+  .recipe-meta dd { margin: 0; }
+  .recipe-source { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--pico-muted-border-color); }
+  :global(article h2) { margin-top: 2rem; }
+  :global(article li) { margin-bottom: .45rem; }
+</style>
