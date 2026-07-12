@@ -2,8 +2,6 @@
 layout: ../../layouts/RecipeLayout.astro
 title: Pakistani Chicken Karahi
 description: A quick tomato-forward chicken karahi with ginger, garlic, and warm spices.
-servings: "2–4"
-time: "30 minutes"
 ---
 
 ## Ingredients
